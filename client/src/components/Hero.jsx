@@ -7,7 +7,7 @@ export default function Hero() {
   return (
 
     
-    <div className="relative h-[calc(100vh-70px)] max-sm:h-[calc(100vh-90px)] w-full bg-primary text-text1 overflow-hidden flex items-center justify-center px-4">
+    <div className="relative h-[calc(100vh-70px)] max-sm:h-[calc(100vh-120px)] w-full bg-primary text-text1 overflow-hidden flex items-center justify-center px-4">
       {/* Floating Abstract Blobs */}
       <motion.div
         animate={{ y: [0, 500, 0], x: [0, 100, 0] }}

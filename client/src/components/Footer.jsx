@@ -70,10 +70,10 @@ function Footer() {
                 <div>
                     <h2 className='text-base font-medium text-text1 uppercase'>Contact Us</h2>
                     <ul className='mt-3 flex flex-col gap-1.5 text-lg'>
-                        <li>BIT</li>
+                        <li>Birla Institute of Technology</li>
                         <li>Mesra, Ranchi</li>
                         <li>Jharkhand, India</li>
-                        <li>Pin - 823013</li>
+                        <li>leoclubbitmesra@gmail.com</li>
                     </ul>
                 </div>
                 </motion.div>

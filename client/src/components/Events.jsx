@@ -56,7 +56,7 @@ const EventsScroller = () => {
   }, []);
   return (
     <div className="bg-primary py-10 md:px-25">
-      <div className="relative bg-primary py-20  flex flex-col md:flex-row items-center bg-gradient-to-l from-text1/40 to-transparent">
+      <div className="relative bg-primary py-20  flex flex-col md:flex-row items-center bg-gradient-to-l from-text1/30 to-transparent">
         {/* Left Text Section */}
         <div className="py-10 w-full md:w-1/2 flex flex-col items-center text-center md:text-left md:items-center">
           <motion.h1
