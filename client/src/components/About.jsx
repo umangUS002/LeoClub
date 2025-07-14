@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { delay, motion, useInView } from "framer-motion";
 import { assets } from "../assets/assets";
 
 const aboutItems = [
@@ -22,23 +22,14 @@ const aboutItems = [
 
 export default function About() {
   return (
-    <div id="about" className="relative bg-primary text-text1 py-28 max-sm:py-10 px-4 md:px-16 min-h-[300vh] overflow-hidden">
+    <div id="about" className="relative bg-primary text-text1 py-18 max-sm:py-10 px-4 md:px-16 overflow-hidden">
 
       {/* Floating Abstract Blobs */}
-      <motion.div
-        animate={{ y: [0, 30, 0], x: [0, 20, 0] }}
-        transition={{ repeat: Infinity, duration: 1, ease: "easeInOut" }}
-        className="absolute top-10 left-0 w-[400px] h-[400px] bg-cyan-500 opacity-10 blur-3xl rounded-full z-0"
-      />
+      
       <motion.div
         animate={{ y: [0, -20, 0], x: [0, -30, 0] }}
         transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
         className="absolute bottom-10 right-10 w-[500px] h-[500px] bg-violet-600 opacity-10 blur-3xl rounded-full z-0"
-      />
-      <motion.div
-        animate={{ y: [0, 200, 0], x: [0, 30, 0] }}
-        transition={{ repeat: Infinity, duration: 10, ease: "easeInOut" }}
-        className="absolute top-0 right-0 w-[100px] h-[100px] bg-violet-600 opacity-100 blur-3xl rounded-full z-0"
       />
       <motion.div
         animate={{ y: [0, 25, 0], x: [0, 15, 0] }}
@@ -52,11 +43,10 @@ export default function About() {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         className="text-center md:hidden text-5xl font-extrabold text-transparent bg-clip-text bg-clip-text bg-gradient-to-r from-[#00FFF0] via-[#3ABEFF] to-[#5F85FF] mb-20 z-10 relative">
-        About LEO
+        About Us
       </motion.h2>
 
       <div className="flex max-sm:flex-col gap-20">
-
         <div className="relative max-w-4xl mx-auto z-10 min-w-[50%]">
           {/* Vertical line */}
           <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-[2px] bg-slate-600 z-0" />
@@ -102,7 +92,7 @@ export default function About() {
                     initial={false}
                     animate={{ opacity: inView ? 1 : 0, y: inView ? 0 : 10 }}
                     transition={{ duration: 0.5 }}
-                    className="mt-4 text-lg text-text1/80 max-w-xl"
+                    className="mt-4 text-lg text-white/70 max-w-xl"
                   >
                     {item.description}
                   </motion.p>
@@ -112,17 +102,26 @@ export default function About() {
           </div>
         </div>
 
-        <div className="max-sm:hidden max-sm:mt-20 text-2xl px-4 flex flex-col items-center justify-top">
-          <motion.h2
+        <div className="max-sm:hidden max-sm:mt-20 text-2xl px-4 flex flex-col md:gap-5 items-center justify-top">
+          <motion.h1
             initial={{ opacity: 0, y: 100 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="drop-shadow-[0_0_2px_#3ABEFF] text-center max-md:hidden text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#00FFF0] via-[#3ABEFF] to-[#5F85FF] mb-10 z-10 relative">
-            About LEO
-          </motion.h2>
-          <h1>At LEO Club, we are a dynamic community of young leaders committed to service, personal development, and social impact. Backed by Lions Clubs International, we empower youth to lead change through hands-on projects, leadership training, and community outreach. Together, we grow as individuals while making a difference in the world around us.</h1>
+            className=" text-center max-md:hidden text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#00FFF0] via-[#3ABEFF] to-[#5F85FF] mb-10 z-10 relative">
+            About Us
+          </motion.h1>
+          <motion.h1
+            initial={{ opacity: 0, x: 100 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="text-lg"
+          >At LEO Club, we are a dynamic community of young leaders committed to service, personal development, and social impact. Backed by Lions Clubs International, we empower youth to lead change through hands-on projects, leadership training, and community outreach.</motion.h1>
 
-          <div className="mt-8 space-y-4 text-left- border border-white p-3">
+          <motion.div
+            initial={{ opacity: 0, x: 100 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.6 }}
+            className="mt-8 text-lg space-y-4 text-left border border-white p-3">
             {[
               "Leadership development through real-world experiences",
               "Organizing impactful social service events",
@@ -147,10 +146,11 @@ export default function About() {
                   `,
                   }}
                 />
-                <p className="text-gray-200 text-lg">{point}</p>
+                <p className="text-gray-200 text-sm">{point}</p>
               </div>
             ))}
-          </div>
+          </motion.div>
+
           <motion.img
             animate={{
               y: [0, -20, 0], // Moves up and down
@@ -162,26 +162,28 @@ export default function About() {
               ease: "easeInOut",
               delay: 0.6,
             }}
-            src={assets.heroimage}
+            src={assets.leologo}
             alt=""
-            className="h-80 mt-10 drop-shadow-[0_0_15px_#3ABEFF]"
+            className="h-80 w-90 mt-10"
           />
+
         </div>
-          <motion.img
-            animate={{
-              y: [0, -20, 0], // Moves up and down
-            }}
-            transition={{
-              duration: 4,
-              repeat: Infinity,
-              repeatType: "loop",
-              ease: "easeInOut",
-              delay: 0.6,
-            }}
-            src={assets.heroimage}
-            alt=""
-            className="h-70 px-10 mt-10 drop-shadow-[0_0_15px_#3ABEFF] md:hidden"
-          />
+
+        <motion.img
+          animate={{
+            y: [0, -20, 0], // Moves up and down
+          }}
+          transition={{
+            duration: 4,
+            repeat: Infinity,
+            repeatType: "loop",
+            ease: "easeInOut",
+            delay: 0.6,
+          }}
+          src={assets.leologo}
+          alt=""
+          className="h-50 w-60 mx-auto mt-5 md:hidden"
+        />
       </div>
 
     </div>

@@ -7,17 +7,17 @@ export default function Hero() {
   return (
 
     
-    <div className="relative h-[calc(100vh-70px)] w-full bg-primary text-text1 overflow-hidden flex items-center justify-center px-4">
+    <div className="relative h-[calc(100vh-70px)] max-sm:h-[calc(100vh-90px)] w-full bg-primary text-text1 overflow-hidden flex items-center justify-center px-4">
       {/* Floating Abstract Blobs */}
       <motion.div
-        animate={{ y: [0, 100, 0], x: [0, 30, 0] }}
-        transition={{ repeat: Infinity, duration: 10, ease: "easeInOut" }}
+        animate={{ y: [0, 500, 0], x: [0, 100, 0] }}
+        transition={{ repeat: Infinity, duration: 20, ease: "easeInOut" }}
         className="absolute top-10 left-0 w-[100px] h-[100px] bg-cyan-500 opacity-100 blur-3xl rounded-full z-0"
       />
       <motion.div
-        animate={{ y: [0, 200, 0], x: [0, 30, 0] }}
-        transition={{ repeat: Infinity, duration: 10, ease: "easeInOut" }}
-        className="absolute bottom-40 right-10 w-[100px] h-[100px] bg-violet-600 opacity-100 blur-3xl rounded-full z-0"
+        animate={{ y: [0, -500, 0], x: [0, 100, 0] }}
+        transition={{ repeat: Infinity, duration: 20, ease: "easeInOut" }}
+        className="absolute bottom-10 right-10 w-[100px] h-[100px] bg-violet-600 opacity-100 blur-3xl rounded-full z-0"
       />
       {/* Wave Background */}
       <LayeredWaveBackground />
@@ -32,7 +32,7 @@ export default function Hero() {
         <h1 className="text-5xl md:text-8xl font-extrabold leading-tight tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-[#00FFF0] via-[#3ABEFF] to-[#5F85FF] ">
             Welcome to <span className="uppercase max-sm:text-6xl text-8xl bg-clip-text bg-gradient-to-r from-[#00FFF0] via-[#3ABEFF] to-[#5F85FF]">LEO</span>
         </h1>
-        <p className="mt-6 text-lg md:text-xl text-text1/80">
+        <p className="mt-6 text-lg md:text-xl text-white/80">
           Leading Excellence & Opportunity – The official student club for innovation, leadership, and beyond.
         </p>
 
