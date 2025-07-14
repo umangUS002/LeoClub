@@ -18,7 +18,7 @@ export default function LayeredWaveBackground() {
   const offset3 = scrollY * 0.2;
 
   return (
-    <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+    <div className="absolute mb-0 inset-0 z-100 overflow-hidden pointer-events-none">
       {/* Back Wave */}
       <div
         style={{ transform: `translateY(-${offset1}px)` }}

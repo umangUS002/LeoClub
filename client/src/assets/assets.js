@@ -1,7 +1,13 @@
 import Logo from "./Logo.png";
+import close_icon from './close_icon.svg'
+import menu_icon from './menu_icon.svg'
+import heroimage from './heroimage.png'
 
 export const assets = {
-    Logo
+    Logo,
+    close_icon,
+    menu_icon,
+    heroimage
 }
 
 export const menuLinks = [
