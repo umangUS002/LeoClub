@@ -65,18 +65,26 @@ const EventsScroller = () => {
           <motion.h1
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.6}}
             className="text-6xl max-sm:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#00FFF0] via-[#3ABEFF] to-[#5F85FF]"
           >
             Events
           </motion.h1>
-          <p className="text-white/80 mt-4 text-base sm:text-lg max-w-md mx-auto md:mx-0">
+          <motion.p 
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay:0.2 }}
+          className="text-white/80 mt-4 text-base sm:text-lg max-w-md mx-auto md:mx-0">
             Explore our club events, workshops, and speaker sessions. Join us
             for engaging learning experiences and networking opportunities.
-          </p>
-          <button className="mt-6 max-sm:mx-auto w-[30%] max-sm:w-[50%] px-10 py-3 bg-text1 hover:bg-text1/30 text-black hover:text-white rounded-xl shadow-md transition-all duration-300">
+          </motion.p>
+          <motion.button 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6}}
+          className="mt-6 max-sm:mx-auto w-[30%] max-sm:w-[50%] px-10 py-3 bg-text1 hover:bg-text1/30 text-black hover:text-white rounded-xl shadow-md transition-all duration-300">
             Show More
-          </button>
+          </motion.button>
         </div>
 
         {/* === Right Scrolling Section === */}
@@ -86,7 +94,11 @@ const EventsScroller = () => {
           <div className="absolute top-0 right-0 h-full w-8 bg-gradient-to-l from-primary to-transparent z-10 pointer-events-none" />
 
           {/* Top Row: L → R */}
-          <div ref={scrollTopRef} className="overflow-hidden whitespace-nowrap scroll-smooth">
+          <motion.div 
+          initial={{ opacity: 0, y: -40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay:0.4 }}
+          ref={scrollTopRef} className="overflow-hidden whitespace-nowrap scroll-smooth">
             <div className="flex gap-4 w-max">
               {[...eventImages, ...eventImages].map((img, idx) => (
                 <img
@@ -97,10 +109,14 @@ const EventsScroller = () => {
                 />
               ))}
             </div>
-          </div>
+          </motion.div>
 
           {/* Bottom Row: R → L */}
-          <div ref={scrollBottomRef} className="overflow-hidden whitespace-nowrap scroll-smooth">
+          <motion.div 
+          initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay:0.4 }}
+          ref={scrollBottomRef} className="overflow-hidden whitespace-nowrap scroll-smooth">
             <div className="flex gap-4 w-max">
               {[...eventImages, ...eventImages].map((img, idx) => (
                 <img
@@ -111,7 +127,7 @@ const EventsScroller = () => {
                 />
               ))}
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </div>

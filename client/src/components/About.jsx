@@ -116,7 +116,7 @@ export default function About() {
             initial={{ opacity: 0, x: 100 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.6 }}
-            className="mt-8 text-lg space-y-4 text-left border border-white p-3">
+            className="mt-8 text-lg space-y-4 text-left border bg-gray-800 border-white p-3">
             {[
               "Leadership development through real-world experiences",
               "Organizing impactful social service events",
@@ -159,7 +159,7 @@ export default function About() {
             }}
             src={assets.leologo}
             alt=""
-            className="h-80 w-90 mt-10"
+            className="h-60 w-70 mt-15"
           />
 
         </div>

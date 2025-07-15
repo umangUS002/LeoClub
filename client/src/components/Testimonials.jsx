@@ -26,7 +26,8 @@ const testimonials = [
 ];
 
 const TestimonialCard = ({ testimonial }) => (
-    <div className="bg-gray-800 backdrop-blur p-6 rounded-2xl max-w-3xl mx-auto text-center shadow-lg transition-all duration-300">
+    <div 
+    className="bg-gray-800 backdrop-blur p-6 rounded-2xl max-w-3xl mx-auto text-center shadow-lg transition-all duration-300">
         <p className="text-lg text-gray-500 mb-6">{testimonial.quote}</p>
         <img
             src={testimonial.image}
@@ -54,7 +55,8 @@ const Testimonials = () => {
     const prev = () => setIndex((index - 1 + testimonials.length) % testimonials.length);
 
     return (
-        <div className="bg-primary py-20 relative">
+        <div 
+        className="bg-primary py-20 relative">
             <div className="flex justify-center pb-15 pt-10">
                 <motion.h1
                     initial={{ opacity: 0, y: 40 }}
@@ -66,7 +68,11 @@ const Testimonials = () => {
                 </motion.h1>
             </div>
 
-            <div className="relative z-10 px-4">
+            <motion.div 
+            initial={{ opacity: 0, x: 100 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6}}
+            className="relative z-10 px-4">
                 <AnimatePresence mode="wait">
                     <motion.div
                         key={index}
@@ -90,7 +96,7 @@ const Testimonials = () => {
                         />
                     ))}
                 </div>
-            </div>
+            </motion.div>
         </div>
     );
 };

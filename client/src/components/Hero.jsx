@@ -43,7 +43,7 @@ export default function Hero() {
             <img src={assets.leologo} alt="Club Logo" className="w-20 h-20 object-contain mb-4" />
             <div className="w-48 h-2 bg-white/20 rounded-full overflow-hidden">
               <div
-                className="h-full bg-white rounded-full transition-all duration-300"
+                className="h-full bg-text1 rounded-full transition-all duration-300"
                 style={{ width: `${progress}%` }}
               />
             </div>
