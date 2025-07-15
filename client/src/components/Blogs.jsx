@@ -54,7 +54,7 @@ const Blogs = () => {
       <div className="flex flex-col md:flex-row items-center justify-between gap-10 w-full max-w-6xl">
         {/* === Left Content === */}
         <div className="relative w-full md:w-1/2 flex flex-col items-center">
-                                        <div className="absolute top-0 right-0 h-full w-8 bg-gradient-to-l from-primary to-text1 z-10 pointer-events-none" />
+          <div className="absolute top-0 right-0 h-full w-8 bg-gradient-to-l max-sm:bg-gradient-to-r from-primary to-text1 z-10 pointer-events-none" />
 
 
           <AnimatePresence mode="wait">
@@ -75,47 +75,46 @@ const Blogs = () => {
               <button
                 key={i}
                 onClick={() => setIndex(i)}
-                className={`w-3 h-3 rounded-full ${
-                  i === index ? "bg-gray-800" : "bg-gray-300"
-                }`}
+                className={`w-3 h-3 rounded-full ${i === index ? "bg-gray-800" : "bg-gray-300"
+                  }`}
               />
             ))}
           </div>
         </div>
 
         {/* === Right Section === */}
-        <div 
-        className="w-full md:w-1/2 flex flex-col items-center justify-center text-center ">
+        <div
+          className="w-full md:w-1/2 flex flex-col items-center justify-center text-center ">
 
-            <div className="">
+          <div className="">
 
-              <motion.h1
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6}}
-            className="text-5xl sm:text-6xl font-extrabold pb-2 text-transparent bg-clip-text bg-gradient-to-r from-[#00FFF0] via-[#3ABEFF] to-[#5F85FF]"
-          >
-            Our Posts
-          </motion.h1>
+            <motion.h1
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="text-5xl sm:text-6xl font-extrabold pb-2 text-transparent bg-clip-text bg-gradient-to-r from-[#00FFF0] via-[#3ABEFF] to-[#5F85FF]"
+            >
+              Our Posts
+            </motion.h1>
 
-          <motion.p 
-          initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay:0.4}}
-          className="text-white/80 mt-4 text-base sm:text-lg max-w-md">
-            Explore our club blogs, posts and other content. Join us
-            for engaging learning visual experience.
-          </motion.p>
+            <motion.p
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="text-white/80 mt-4 text-base sm:text-lg max-w-md">
+              Explore our club blogs, posts and other content. Join us
+              for engaging learning visual experience.
+            </motion.p>
 
-          <motion.button 
-          initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay:0.6}}
-          className="mt-6 px-8 py-3 bg-text1 hover:bg-text1/30 text-black hover:text-white rounded-xl shadow-md transition-all duration-300">
-            Show More
-          </motion.button>
-            </div>
-          
+            <motion.button
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+              className="mt-6 px-8 py-3 bg-text1 hover:bg-text1/30 text-black hover:text-white rounded-xl shadow-md transition-all duration-300">
+              Show More
+            </motion.button>
+          </div>
+
         </div>
       </div>
     </div>
