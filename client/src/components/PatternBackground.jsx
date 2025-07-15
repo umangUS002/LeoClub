@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 
 export default function LayeredWaveBackground() {
   const [scrollY, setScrollY] = useState(0);
@@ -18,7 +19,11 @@ export default function LayeredWaveBackground() {
   const offset3 = scrollY * 0.2;
 
   return (
-    <div className="absolute mb-0 inset-0 z-1000 overflow-hidden pointer-events-none">
+    <motion.div 
+    initial={{ opacity: 0, y: 40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1.2, delay: 3.2}}
+    className="absolute mb-0 inset-0 z-10 overflow-hidden pointer-events-none">
       {/* Back Wave */}
       <div
         style={{ transform: `translateY(-${offset1}px)` }}
@@ -60,6 +65,6 @@ export default function LayeredWaveBackground() {
           />
         </svg>
       </div>
-    </div>
+    </motion.div>
   );
 }

@@ -1,62 +1,98 @@
-import React from 'react'
-import { motion } from 'framer-motion'
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
-function Testimonials() {
+const testimonials = [
+    {
+        quote:
+            "The finance club has allowed me to level my game professionally and personally. It has provided me invaluable experiences in team management, strategic planning, and networking with industry professionals, opening up numerous career opportunities.",
+        name: "Lakshya Saini",
+        title: "Joint President",
+        image: "https://i.pravatar.cc/100?img=1",
+    },
+    {
+        quote:
+            "Being part of the club has taught me leadership and allowed me to connect with mentors in the industry. Truly a transformative experience!",
+        name: "Priya Verma",
+        title: "Club Member",
+        image: "https://i.pravatar.cc/100?img=2",
+    },
+    {
+        quote:
+            "This experience broadened my perspective and gave me lifelong friends and valuable skills.",
+        name: "Rahul Mehta",
+        title: "Event Coordinator",
+        image: "https://i.pravatar.cc/100?img=3",
+    },
+];
+
+const TestimonialCard = ({ testimonial }) => (
+    <div className="bg-gray-800 backdrop-blur p-6 rounded-2xl max-w-3xl mx-auto text-center shadow-lg transition-all duration-300">
+        <p className="text-lg text-gray-500 mb-6">{testimonial.quote}</p>
+        <img
+            src={testimonial.image}
+            alt={testimonial.name}
+            className="w-24 h-24 rounded-full mx-auto mb-4 object-cover"
+        />
+        <h3 className="text-xl font-semibold text-primary">{testimonial.name}</h3>
+        <p className="text-sm text-text1">{testimonial.title}</p>
+    </div>
+);
+
+const Testimonials = () => {
+    const [index, setIndex] = useState(0);
+
+    // Auto slide every 5 seconds
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
+        }, 5000); // 5 seconds
+
+        return () => clearInterval(interval); // Cleanup on unmount
+    }, []);
+
+    const next = () => setIndex((index + 1) % testimonials.length);
+    const prev = () => setIndex((index - 1 + testimonials.length) % testimonials.length);
+
     return (
-
-        <div>
-            <div className='flex justify-center mt-20'>
+        <div className="bg-primary py-20 relative">
+            <div className="flex justify-center pb-15 pt-10">
                 <motion.h1
-                initial={{ opacity: 0, y: 100 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                className="text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#00FFF0] via-[#3ABEFF] to-[#5F85FF] mb-16"
-            >
-                Testimonials
-            </motion.h1>
-            </div>
-            
-
-            <div class="flex flex-wrap items-center justify-center gap-6 pt-14">
-                <div class="text-sm w-80 border border-gray-500/30 pb-6 rounded-lg bg-gray-500 shadow-[0px_4px_15px_0px] shadow-black/5">
-                    <div class="flex flex-col items-center px-5 py-4 relative">
-                        <img class="h-24 w-24 absolute -top-14 rounded-full" src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=200" alt="userImage1" />
-                        <div class="pt-8 text-center">
-                            <h1 class="text-lg font-medium text-gray-800">Donald Jackman</h1>
-                            <p class="text-gray-800/80">Content Creator</p>
-                        </div>
-                    </div>
-                    <p class="text-white/80 px-6 text-center">I've been using imagify for nearly two years, primarily for Instagram, and it has been incredibly user-friendly, making my work much easier.</p>
-                </div>
-
-                <div class="text-sm w-80 border border-gray-500/30 pb-6 rounded-lg bg-white shadow-[0px_4px_15px_0px] shadow-white/5">
-                    <div class="flex flex-col items-center px-5 py-4 relative">
-                        <img class="h-24 w-24 absolute -top-14 rounded-full" src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=200" alt="userImage2" />
-                        <div class="pt-8 text-center">
-                            <h1 class="text-lg font-medium text-gray-800">Richard Nelson</h1>
-                            <p class="text-gray-800/80">Instagram Influencer</p>
-                        </div>
-                    </div>
-                    <p class="text-gray-500 px-6 text-center">I've been using imagify for nearly two years, primarily for Instagram, and it has been incredibly user-friendly, making my work much easier.</p>
-                    <div class="flex justify-center pt-4">
-                    </div>
-                </div>
-
-                <div class="text-sm w-80 border border-gray-500/30 pb-6 rounded-lg bg-gray-500 shadow-[0px_4px_15px_0px] shadow-black/5">
-                    <div class="flex flex-col items-center px-5 py-4 relative">
-                        <img class="h-24 w-24 absolute -top-14 rounded-full" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=200&h=200&auto=format&fit=crop" alt="userImage3" />
-                        <div class="pt-8 text-center">
-                            <h1 class="text-lg font-medium text-gray-800">James Washington</h1>
-                            <p class="text-gray-800/80">Marketing Manager</p>
-                        </div>
-                    </div>
-                    <p class="text-white/80 px-6 text-center">I've been using imagify for nearly two years, primarily for Instagram, and it has been incredibly user-friendly, making my work much easier.</p>
-                </div>
+                    initial={{ opacity: 0, y: 40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6 }}
+                    className="text-6xl max-sm:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#00FFF0] via-[#3ABEFF] to-[#5F85FF]"
+                >
+                    Testimonials
+                </motion.h1>
             </div>
 
+            <div className="relative z-10 px-4">
+                <AnimatePresence mode="wait">
+                    <motion.div
+                        key={index}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -20 }}
+                        transition={{ duration: 0.5 }}
+                    >
+                        <TestimonialCard testimonial={testimonials[index]} />
+                    </motion.div>
+                </AnimatePresence>                
+
+                {/* Dots */}
+                <div className="flex justify-center mt-8 gap-2">
+                    {testimonials.map((_, i) => (
+                        <button
+                            key={i}
+                            onClick={() => setIndex(i)}
+                            className={`w-3 h-3 rounded-full ${i === index ? "bg-gray-800" : "bg-gray-300"
+                                }`}
+                        />
+                    ))}
+                </div>
+            </div>
         </div>
+    );
+};
 
-    )
-}
-
-export default Testimonials
+export default Testimonials;

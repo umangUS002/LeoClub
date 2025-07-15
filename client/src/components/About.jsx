@@ -27,14 +27,9 @@ export default function About() {
       {/* Floating Abstract Blobs */}
       
       <motion.div
-        animate={{ y: [0, -20, 0], x: [0, -30, 0] }}
-        transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-        className="absolute bottom-10 right-10 w-[500px] h-[500px] bg-violet-600 opacity-10 blur-3xl rounded-full z-0"
-      />
-      <motion.div
-        animate={{ y: [0, 25, 0], x: [0, 15, 0] }}
-        transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
-        className="absolute top-1/2 right-1/4 w-[300px] h-[300px] bg-blue-400 opacity-10 blur-2xl rounded-full z-0"
+        animate={{ y: [0, -805, 0], x: [0, 10, 0] }}
+        transition={{ repeat: Infinity, duration: 20, ease: "easeInOut" }}
+        className="absolute top-1/2 right-3/5 w-[400px] h-[400px] bg-cyan-500 opacity-10 blur-2xl rounded-full z-0"
       />
 
       {/* Content */}
@@ -51,7 +46,7 @@ export default function About() {
           {/* Vertical line */}
           <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-[2px] bg-slate-600 z-0" />
 
-          <div className="flex flex-col gap-[15vh] relative z-10">
+          <div className="flex flex-col gap-[15vh] max-sm:gap-[10vh] relative z-10">
             {aboutItems.map((item, i) => {
               const ref = useRef(null);
               const inView = useInView(ref, { once: false, amount: 0.2 });
@@ -182,7 +177,7 @@ export default function About() {
           }}
           src={assets.leologo}
           alt=""
-          className="h-50 w-60 mx-auto mt-5 md:hidden"
+          className="h-40 w-45 mx-auto mt-5 md:hidden"
         />
       </div>
 

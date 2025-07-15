@@ -1,10 +1,8 @@
 import React, { useEffect, useRef } from "react";
-import { assets } from "../assets/assets"; // Replace with your actual assets
 import { motion } from "framer-motion";
+import { assets } from "../assets/assets";
 
-// Replace with your actual images
 const eventImages = [
-  assets.eventposter,
   assets.eventposter,
   assets.eventposter,
   assets.eventposter,
@@ -13,114 +11,107 @@ const eventImages = [
   assets.eventposter,
 ];
 
-
-
 const EventsScroller = () => {
-  const scrollRefL = useRef(null); // Top row (left to right)
-  const scrollRefLn = useRef(null); // Bottom row (right to left)
+  const scrollTopRef = useRef(null);
+  const scrollBottomRef = useRef(null);
 
-  // Left to Right Scroll
+  // Scroll Top L → R
   useEffect(() => {
-    const el = scrollRefL.current;
-    if (!el) return;
+    const el = scrollTopRef.current;
     let req;
-
     const scroll = () => {
       el.scrollLeft += 1;
-      if (el.scrollLeft >= el.scrollWidth / 2) {
-        el.scrollLeft = 0;
-      }
+      if (el.scrollLeft >= el.scrollWidth / 2) el.scrollLeft = 0;
       req = requestAnimationFrame(scroll);
     };
-
     scroll();
     return () => cancelAnimationFrame(req);
   }, []);
 
-  // Right to Left Scroll (delayed to ensure DOM is ready)
+  // Scroll Bottom R → L
   useEffect(() => {
-    const el = scrollRefLn.current;
-    if (!el) return;
-    let req;
+  const el = scrollBottomRef.current;
+  if (!el) return;
 
-    const scroll = () => {
-      el.scrollLeft += 1;
-      if (el.scrollLeft >= el.scrollWidth / 2) {
-        el.scrollLeft = 0;
-      }
-      req = requestAnimationFrame(scroll);
-    };
+  let req;
 
-    scroll();
-    return () => cancelAnimationFrame(req);
-  }, []);
+  const scroll = () => {
+    el.scrollLeft -= 1;
+    if (el.scrollLeft <= 0) {
+      el.scrollLeft = el.scrollWidth / 2;
+    }
+    req = requestAnimationFrame(scroll);
+  };
+
+  const waitForContent = () => {
+    if (el.scrollWidth <= el.clientWidth) {
+      // Retry until content is fully laid out
+      requestAnimationFrame(waitForContent);
+    } else {
+      el.scrollLeft = el.scrollWidth / 2;
+      scroll();
+    }
+  };
+
+  waitForContent(); // Start once content is ready
+
+  return () => cancelAnimationFrame(req);
+}, []);
   return (
-    <div className="bg-primary py-10 md:px-25">
-      <div className="relative bg-primary py-20  flex flex-col md:flex-row items-center bg-gradient-to-l from-text1/30 to-transparent">
-        {/* Left Text Section */}
-        <div className="py-10 w-full md:w-1/2 flex flex-col items-center text-center md:text-left md:items-center">
+    <div className="bg-primary py-16 px-4 md:px-40 min-h-[80vh] flex items-center">
+      <div className="flex flex-col md:flex-row items-center md:items-center gap-10 w-full">
+        {/* === Left Content === */}
+        <div className="w-full md:w-1/2 flex flex-col justify-center text-center md:text-left">
           <motion.h1
-            initial={{ opacity: 0, y: 100 }}
+            initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#00FFF0] via-[#3ABEFF] to-[#5F85FF] mb-6"
+            className="text-6xl max-sm:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#00FFF0] via-[#3ABEFF] to-[#5F85FF]"
           >
             Events
           </motion.h1>
-          <p className="text-white/80 text-lg max-w-md flex text-center">
+          <p className="text-white/80 mt-4 text-base sm:text-lg max-w-md mx-auto md:mx-0">
             Explore our club events, workshops, and speaker sessions. Join us
             for engaging learning experiences and networking opportunities.
           </p>
-          <button className="mt-6 px-6 py-3 bg-text1 hover:bg-text1/30 text-white rounded-xl shadow-md transition-all duration-300">
+          <button className="mt-6 max-sm:mx-auto w-[30%] max-sm:w-[50%] px-10 py-3 bg-text1 hover:bg-text1/30 text-black hover:text-white rounded-xl shadow-md transition-all duration-300">
             Show More
           </button>
         </div>
 
-        {/* Right Auto-Scrolling Thumbnails */}
-        <div className="w-full md:w-1/2 px-10 mt-10 md:mt-0 relative space-y-6">
-          {/* Top: Left to Right */}
-          <div
-            ref={scrollRefL}
-            className="overflow-hidden whitespace-nowrap scroll-smooth"
-          >
-            <motion.div 
-                initial={{ opacity: 0, y: -100 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="flex gap-4 w-max">
+        {/* === Right Scrolling Section === */}
+        <div className="w-full md:w-1/2 space-y-6 relative flex flex-col justify-center h-100">
+          {/* Gradient overlays */}
+          <div className="absolute top-0 left-0 h-full w-8 bg-gradient-to-l from-primary to-text1 z-10 pointer-events-none" />
+          <div className="absolute top-0 right-0 h-full w-8 bg-gradient-to-l from-primary to-transparent z-10 pointer-events-none" />
+
+          {/* Top Row: L → R */}
+          <div ref={scrollTopRef} className="overflow-hidden whitespace-nowrap scroll-smooth">
+            <div className="flex gap-4 w-max">
               {[...eventImages, ...eventImages].map((img, idx) => (
                 <img
                   key={`top-${idx}`}
                   src={img}
                   alt={`event-top-${idx}`}
-                  className="h-40 min-w-[300px] min-h-[200px] rounded-xl shadow-lg object-cover transition-all duration-300 hover:scale-105"
+                  className="h-46 max-sm:h-40 min-w-[220px] sm:min-w-[260px] md:min-w-[280px] rounded-xl shadow-xl object-cover transition-all duration-300 hover:scale-105"
                 />
               ))}
-            </motion.div>
+            </div>
           </div>
 
-          {/* Bottom: Right to Left */}
-          <div
-            ref={scrollRefLn}
-            className="overflow-hidden whitespace-nowrap scroll-smooth"
-          >
-            <motion.div 
-                initial={{ opacity: 0, y: 100 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="flex gap-4 w-max">
+          {/* Bottom Row: R → L */}
+          <div ref={scrollBottomRef} className="overflow-hidden whitespace-nowrap scroll-smooth">
+            <div className="flex gap-4 w-max">
               {[...eventImages, ...eventImages].map((img, idx) => (
                 <img
                   key={`bottom-${idx}`}
                   src={img}
                   alt={`event-bottom-${idx}`}
-                  className="h-40 min-w-[300px] min-h-[200px] rounded-xl shadow-lg object-cover transition-all duration-300 hover:scale-105"
+                  className="h-66 max-sm:h-40 min-w-[220px] sm:min-w-[260px] md:min-w-[280px] rounded-xl shadow-xl object-cover transition-all duration-300 hover:scale-105"
                 />
               ))}
-            </motion.div>
+            </div>
           </div>
-
-          {/* Left & Right Gradient Fades */}
         </div>
       </div>
     </div>
