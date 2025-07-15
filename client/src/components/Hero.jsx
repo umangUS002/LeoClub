@@ -87,7 +87,7 @@ export default function Hero() {
         initial={{ opacity: 0, y: 40 }}
         animate={isLoaded ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
         transition={{ duration: 1.2, delay: isLoaded ? 1.2 : 0 }}
-        className="z-10 text-center max-w-3xl"
+        className="z-10 text-center max-w-3xl max-sm:flex max-sm:flex-col gap-5"
       >
         <h1 className="text-5xl md:text-8xl font-extrabold leading-tight tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-[#00FFF0] via-[#3ABEFF] to-[#5F85FF] ">
           Welcome to{" "}
