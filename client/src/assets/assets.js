@@ -25,8 +25,265 @@ export const assets = {
 export const menuLinks = [
     { name: "Home", path: "/" },
     { name: "About", path: "/" },
-    { name: "Events", path: "/" },
-    { name: "Blogs", path: "/" },
-    { name: "Gallery", path: "/" },
-    { name: "Our Team", path: "/" },
+    { name: "Events", path: "/events" },
+    { name: "Posts", path: "/posts" },
+    { name: "Gallery", path: "/gallery" },
+    { name: "Our Team", path: "/team" },
+]
+
+export const eventsData = [
+    {
+        name: "Murder Mystery",
+        status: "Upcoming",
+        Month: "September",
+        Date: "12th September",
+        Venue: "Mehek",
+        image: assets.eventposter,
+        description: "Ab interesting murder solving case."
+    },
+    {
+        name: "Murder Mystery",
+        status: "Upcoming",
+        Month: "September",
+        Date: "12th September",
+        Venue: "Mehek",
+        image: assets.eventposter,
+        description: "Ab interesting murder solving case."
+    },
+    {
+        name: "Murder Mystery",
+        status: "Upcoming",
+        Month: "September",
+        Date: "12th September",
+        Venue: "Mehek",
+        image: assets.eventposter,
+        description: "Ab interesting murder solving case."
+    },
+    {
+        name: "Murder Mystery",
+        status: "Upcoming",
+        Month: "September",
+        Date: "12th September",
+        Venue: "Mehek",
+        image: assets.eventposter,
+        description: "Ab interesting murder solving case."
+    },
+    {
+        name: "Murder Mystery",
+        status: "Completed",
+        Month: "September",
+        Date: "12th September",
+        Venue: "Mehek",
+        image: assets.eventposter,
+        description: "Ab interesting murder solving case."
+    },
+    {
+        name: "Murder Mystery",
+        status: "Completed",
+        Month: "September",
+        Date: "12th September",
+        Venue: "Mehek",
+        image: assets.eventposter,
+        description: "Ab interesting murder solving case."
+    },
+    {
+        name: "Murder Mystery",
+        status: "Completed",
+        Month: "September",
+        Date: "12th September",
+        Venue: "Mehek",
+        image: assets.eventposter,
+        description: "Ab interesting murder solving case."
+    },
+    {
+        name: "Murder Mystery",
+        status: "Completed",
+        Month: "September",
+        Date: "12th September",
+        Venue: "Mehek",
+        image: assets.eventposter,
+        description: "Ab interesting murder solving case."
+    },
+    {
+        name: "Murder Mystery",
+        status: "Completed",
+        Month: "September",
+        Date: "12th September",
+        Venue: "Mehek",
+        image: assets.eventposter,
+        description: "Ab interesting murder solving case."
+    },
+    {
+        name: "Murder Mystery",
+        status: "Completed",
+        Month: "September",
+        Date: "12th September",
+        Venue: "Mehek",
+        image: assets.eventposter,
+        description: "Ab interesting murder solving case."
+    },
+
+]
+
+export const contentData = [
+    {
+        image: assets.eventposter,
+        title: "World Population Day",
+        description: "Leo observes World Population Day as one of the most important events.",
+        date: "12th Feb, 2025",
+        workCredit: "Umang",
+        contentCredit: "Srivastava",
+        type: "Blog",
+        link: "https/#"
+    },
+    {
+        image: assets.eventposter,
+        title: "World Population Day",
+        description: "Leo observes World Population Day as one of the most important events.",
+        date: "12th Feb, 2025",
+        workCredit: "Umang",
+        contentCredit: "Srivastava",
+        type: "Blog",
+        link: "https/#"
+    },
+    {
+        image: assets.eventposter,
+        title: "World Population Day",
+        description: "Leo observes World Population Day as one of the most important events.",
+        date: "12th Feb, 2025",
+        workCredit: "Umang",
+        contentCredit: "Srivastava",
+        type: "Blog",
+        link: "https/#"
+    },
+    {
+        image: assets.eventposter,
+        title: "World Population Day",
+        description: "Leo observes World Population Day as one of the most important events.",
+        date: "12th Feb, 2025",
+        workCredit: "Umang",
+        contentCredit: "Srivastava",
+        type: "Blog",
+        link: "https/#"
+    },
+    {
+        image: assets.eventposter,
+        title: "World Population Day",
+        description: "Leo observes World Population Day as one of the most important events.",
+        date: "12th Feb, 2025",
+        workCredit: "Umang",
+        contentCredit: "Srivastava",
+        type: "Blog",
+        link: "https/#"
+    },
+    {
+        image: assets.eventposter,
+        title: "World Population Day",
+        description: "Leo observes World Population Day as one of the most important events.",
+        date: "12th Feb, 2025",
+        workCredit: "Umang",
+        contentCredit: "Srivastava",
+        type: "Blog",
+        link: "https/#"
+    },
+    {
+        image: assets.eventposter,
+        title: "Takeshi's Castle",
+        description: "Leo announces the most awaited event of BITOTSAV 2025.",
+        date: "12th Feb, 2025",
+        workCredit: "Umang",
+        contentCredit: "Srivastava",
+        type: "Video",
+        link: "https/#"
+    },
+    {
+        image: assets.eventposter,
+        title: "Takeshi's Castle",
+        description: "Leo announces the most awaited event of BITOTSAV 2025.",
+        date: "12th Feb, 2025",
+        workCredit: "Umang",
+        contentCredit: "Srivastava",
+        type: "Video",
+        link: "https/#"
+    },
+    {
+        image: assets.eventposter,
+        title: "Takeshi's Castle",
+        description: "Leo announces the most awaited event of BITOTSAV 2025.",
+        date: "12th Feb, 2025",
+        workCredit: "Umang",
+        contentCredit: "Srivastava",
+        type: "Video",
+        link: "https/#"
+    },
+    {
+        image: assets.eventposter,
+        title: "Takeshi's Castle",
+        description: "Leo announces the most awaited event of BITOTSAV 2025.",
+        date: "12th Feb, 2025",
+        workCredit: "Umang",
+        contentCredit: "Srivastava",
+        type: "Video",
+        link: "https/#"
+    },
+    {
+        image: assets.eventposter,
+        title: "Takeshi's Castle",
+        description: "Leo announces the most awaited event of BITOTSAV 2025.",
+        date: "12th Feb, 2025",
+        workCredit: "Umang",
+        contentCredit: "Srivastava",
+        type: "Video",
+        link: "https/#"
+    },
+    {
+        image: assets.eventposter,
+        title: "What is Leo?",
+        description: "Know about Leo and it's impact.",
+        date: "12th Feb, 2025",
+        workCredit: "Umang",
+        contentCredit: "Srivastava",
+        type: "Post",
+        link: "https/#"
+    },
+    {
+        image: assets.eventposter,
+        title: "What is Leo?",
+        description: "Know about Leo and it's impact.",
+        date: "12th Feb, 2025",
+        workCredit: "Umang",
+        contentCredit: "Srivastava",
+        type: "Post",
+        link: "https/#"
+    },
+    {
+        image: assets.eventposter,
+        title: "What is Leo?",
+        description: "Know about Leo and it's impact.",
+        date: "12th Feb, 2025",
+        workCredit: "Umang",
+        contentCredit: "Srivastava",
+        type: "Post",
+        link: "https/#"
+    },
+    {
+        image: assets.eventposter,
+        title: "What is Leo?",
+        description: "Know about Leo and it's impact.",
+        date: "12th Feb, 2025",
+        workCredit: "Umang",
+        contentCredit: "Srivastava",
+        type: "Post",
+        link: "https/#"
+    },
+    {
+        image: assets.eventposter,
+        title: "What is Leo?",
+        description: "Know about Leo and it's impact.",
+        date: "12th Feb, 2025",
+        workCredit: "Umang",
+        contentCredit: "Srivastava",
+        type: "Post",
+        link: "https/#"
+    }
 ]
