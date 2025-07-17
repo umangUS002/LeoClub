@@ -6,6 +6,7 @@ import EventsScroller from '../components/Events'
 import Footer from '../components/Footer'
 import Testimonials from '../components/Testimonials'
 import Blogs from '../components/Blogs'
+import Gallery from '../components/Gallery'
 
 function Home() {
   return (
@@ -13,8 +14,9 @@ function Home() {
       <Hero/>
       <About/>
       <EventsScroller/>
-      <Testimonials/>
+      <Gallery/>
       <Blogs/>
+      <Testimonials/>
     </div>
   )
 }

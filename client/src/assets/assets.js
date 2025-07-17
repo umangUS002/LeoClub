@@ -24,7 +24,7 @@ export const assets = {
 
 export const menuLinks = [
     { name: "Home", path: "/" },
-    { name: "About", path: "/" },
+    { name: "About", path: "#about", homeSection: true },
     { name: "Events", path: "/events" },
     { name: "Posts", path: "/posts" },
     { name: "Gallery", path: "/gallery" },
@@ -129,12 +129,14 @@ export const contentData = [
     {
         image: assets.eventposter,
         title: "World Population Day",
-        description: "Leo observes World Population Day as one of the most important events.",
+        description: "Without justice and love, peace will always be a great illusion.—Dom Hélder Câmara Imagine a world where accountability is optional and crimes go unanswered — unthinkable, right? Justice is more than a concept; it’s a commitment that grows quietly through actions and fairness. It’s the strength that heals and unites humanity.It’s the thread that holds the fabric of civilization together. As a pillar of dignity and hope, the International Criminal Court stands firm in defending truth, breaking through fear and impunity. Each year on July 17, the International Day of Justice brings the world together to affirm that accountability matters, and justice must prevail. We at Leo Club, BIT Mesra , extend our warm wishes on International Justice Day. Justice isn’t just a destination but a journey shaped by those who care.",
         date: "12th Feb, 2025",
         workCredit: "Umang",
         contentCredit: "Srivastava",
         type: "Blog",
-        link: "https/#"
+        instaLink: "https/#",
+        fbLink: "",
+        linkedinLink: ""
     },
     {
         image: assets.eventposter,
@@ -144,7 +146,9 @@ export const contentData = [
         workCredit: "Umang",
         contentCredit: "Srivastava",
         type: "Blog",
-        link: "https/#"
+        instaLink: "https/#",
+        fbLink: "",
+        linkedinLink: ""
     },
     {
         image: assets.eventposter,
@@ -154,7 +158,9 @@ export const contentData = [
         workCredit: "Umang",
         contentCredit: "Srivastava",
         type: "Blog",
-        link: "https/#"
+        instaLink: "https/#",
+        fbLink: "",
+        linkedinLink: ""
     },
     {
         image: assets.eventposter,
@@ -164,7 +170,9 @@ export const contentData = [
         workCredit: "Umang",
         contentCredit: "Srivastava",
         type: "Blog",
-        link: "https/#"
+        instaLink: "https/#",
+        fbLink: "",
+        linkedinLink: ""
     },
     {
         image: assets.eventposter,
@@ -174,7 +182,9 @@ export const contentData = [
         workCredit: "Umang",
         contentCredit: "Srivastava",
         type: "Blog",
-        link: "https/#"
+        instaLink: "https/#",
+        fbLink: "",
+        linkedinLink: ""
     },
     {
         image: assets.eventposter,
@@ -184,7 +194,9 @@ export const contentData = [
         workCredit: "Umang",
         contentCredit: "Srivastava",
         type: "Blog",
-        link: "https/#"
+        instaLink: "https/#",
+        fbLink: "",
+        linkedinLink: ""
     },
     {
         image: assets.eventposter,
@@ -286,4 +298,13 @@ export const contentData = [
         type: "Post",
         link: "https/#"
     }
+]
+
+export const gallery = [
+    {link: "https://images.unsplash.com/photo-1719368472026-dc26f70a9b76?q=80&h=800&w=800&auto=format&fit=crop"},
+    {link: "https://images.unsplash.com/photo-1719368472026-dc26f70a9b76?q=80&h=800&w=800&auto=format&fit=crop"},
+    {link: "https://images.unsplash.com/photo-1719368472026-dc26f70a9b76?q=80&h=800&w=800&auto=format&fit=crop"},
+    {link: "https://images.unsplash.com/photo-1719368472026-dc26f70a9b76?q=80&h=800&w=800&auto=format&fit=crop"},
+    {link: "https://images.unsplash.com/photo-1719368472026-dc26f70a9b76?q=80&h=800&w=800&auto=format&fit=crop"},
+    {link: "https://images.unsplash.com/photo-1719368472026-dc26f70a9b76?q=80&h=800&w=800&auto=format&fit=crop"},
 ]

@@ -1,16 +1,13 @@
-import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
 import './index.css'
 import App from './App.jsx'
-import {MotionConfig} from 'motion/react'
+import { MotionConfig } from 'motion/react'
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <BrowserRouter>
-      <MotionConfig viewport={{once: true}} >
+  <BrowserRouter>
+      <MotionConfig viewport={{ once: true }} >
         <App />
       </MotionConfig>
-    </BrowserRouter>
-  </StrictMode>,
+  </BrowserRouter>
 )

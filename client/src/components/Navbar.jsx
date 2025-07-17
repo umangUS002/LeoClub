@@ -21,11 +21,45 @@ function Navbar() {
 
         <div className={`text-text1 max-sm:fixed  max-sm:h-80vh backdrop-blur-xl text-sm max-sm:w-full max-sm:top-15 max-sm:border-t border-text1 right-0 flex flex-col sm:flex-row items-center sm:items-center gap-4 sm:gap-8 max-sm:p-4
         transition-all duration-300 z-50 bg-primary/50 ${open ? 'max-sm:translate-x-0 h-screen' : 'max-sm:translate-x-full'}`}>
-            {menuLinks.map((link, index)=>(
-                <Link className={`${open ? 'text-3xl mb-7' : '' }`} onClick={()=>setOpen(false)} key={index} to={link.path} >
-                    {link.name}
-                </Link>
-            ))}
+            {menuLinks.map((link, index) => {
+  if (link.homeSection) {
+    return (
+      <button
+        key={index}
+        onClick={() => {
+          setOpen(false);
+          if (window.location.pathname !== "/") {
+            navigate("/", { replace: false });
+            // Delay scroll to #about after page change
+            setTimeout(() => {
+              const el = document.getElementById("about");
+              if (el) el.scrollIntoView({ behavior: "smooth" });
+            }, 100);
+          } else {
+            const el = document.getElementById("about");
+            if (el) el.scrollIntoView({ behavior: "smooth" });
+          }
+        }}
+        className={`${open ? "text-3xl mb-7" : ""}`}
+      >
+        {link.name}
+      </button>
+    );
+  }
+
+  return (
+    <Link
+      key={index}
+      to={link.path}
+      className={`${open ? "text-3xl mb-7" : ""}`}
+      onClick={() => setOpen(false)}
+    >
+      {link.name}
+    </Link>
+  );
+})}
+
+                
 
             <div className='flex max-sm:flex-col items-start sm:items-center gap-6'>
                 <button className='cursor-pointer px-8 py-2 bg-primary hover:bg-text1/50 transition-all text-primary bg-text1 rounded-lg'>Admin</button>

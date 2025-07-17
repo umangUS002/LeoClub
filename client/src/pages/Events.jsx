@@ -37,7 +37,7 @@ function Events() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
                 className='text-3xl md:text-4xl mb-6'>Upcoming</motion.h1>
-                <div className='grid grid-cols-2 md:grid-cols-3 gap-10 max-sm:gap-8'>
+                <div className='grid grid-cols-1 md:grid-cols-3 gap-10 max-sm:gap-4'>
                     {upcomingEvents.map((event, index) => (
                         <motion.div 
                         initial={{ opacity: 0, y: 60 }}
@@ -45,9 +45,9 @@ function Events() {
                         transition={{ duration: 0.6, delay: 0.2 }}
                         key={index} className="bg-white/10 p-4 rounded-lg shadow-md text-white transform transition duration-300 hover:scale-105">
                             <img src={event.image} alt={event.name} className='w-full h-60 md:h-80 object-cover rounded-md mb-2' />
-                            <h2 className='text-lg font-bold'>{event.name}</h2>
-                            <p className='text-sm mb-1 mt-2'>{event.description}</p>
-                            <div className='text-xs mt-3 flex justify-between'>
+                            <h2 className='text-lg font-bold max-sm:px-1'>{event.name}</h2>
+                            <p className='text-sm mb-1 mt-2 max-sm:px-1'>{event.description}</p>
+                            <div className='text-xs mt-3 flex justify-between max-sm:px-1'>
                                 <p className='text-gray-300'>{event.Date}</p>
                                 <span className='text-green-400'>{event.status}</span>
                             </div>
@@ -63,22 +63,22 @@ function Events() {
                 initial={{ opacity: 0, y: 60 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6}}
-                className='mt-10 w-full max-w-7xl px-6 md:px-20 mt-20 bg-primary rounded-lg pt-10 pb-10 shadow-lg shadow-text1/30'
+                className='mt-10 w-full max-w-7xl px-1 md:px-20 mt-20 bg-primary rounded-lg pt-10 pb-10 shadow-lg shadow-text1/30'
             >
-                <motion.h1 className='text-3xl md:text-4xl mb-6'>Completed</motion.h1>
-                <div className='grid grid-cols-2 md:grid-cols-3 gap-10 max-sm:gap-8'>
+                <motion.h1 className='text-3xl md:text-4xl mb-6 text-center'>Completed</motion.h1>
+                <div className='grid grid-cols-2 md:grid-cols-3 gap-10 max-sm:gap-3'>
                     {completedEvents.map((event, index) => (
                         <motion.div 
-                        initial={{ opacity: 0, y: 60 }}
+                        initial={{ opacity: 0, y: 100 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.4, delay: 0.2 }}
-                        key={index} className="bg-white/10 p-4 rounded-lg shadow-md text-white transform transition duration-300 hover:scale-105">
+                        key={index} className="bg-white/10 p-4 max-sm:p-1 max-sm:pb-3 max-sm:mb-3 rounded-lg shadow-md text-white transform transition duration-300 hover:scale-105">
                             <img src={event.image} alt={event.name} className='w-full h-60 md:h-80 object-cover rounded-md mb-2' />
-                            <h2 className='text-lg font-bold'>{event.name}</h2>
-                            <p className='text-sm mb-1 mt-2'>{event.description}</p>
-                            <div className='text-xs mt-3 flex justify-between'>
+                            <h2 className='text-lg font-bold px-1 max-sm:px-1'>{event.name}</h2>
+                            <p className='text-sm mb-1 mt-2 max-sm:px-1'>{event.description}</p>
+                            <div className='text-xs mt-3 max-sm:flex-col flex justify-between max-sm:px-1'>
                                 <p className='text-gray-300'>{event.Date}</p>
-                                <span className='text-red-400'>{event.status}</span>
+                                <span className='text-red-400 max-sm:pt-1'>{event.status}</span>
                             </div>
                         </motion.div>
                     ))}

@@ -69,8 +69,8 @@ const Testimonials = () => {
             </div>
 
             <motion.div 
-            initial={{ opacity: 0, x: 100 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0}}
+            whileInView={{ opacity: 1}}
             transition={{ duration: 0.6}}
             className="relative z-10 px-4">
                 <AnimatePresence mode="wait">
