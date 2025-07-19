@@ -3,7 +3,7 @@ import { assets } from '../../assets/assets'
 import { Link, Outlet, useNavigate } from 'react-router-dom';
 import { useAppContext } from '../../context/AppContext';
 import { motion } from 'framer-motion';
-import Sidebar from '../../components/admin/SideBar';
+import SideBar from '../../components/admin/SideBar';
 
 function Layout() {
 
@@ -25,7 +25,7 @@ function Layout() {
         <button onClick={logout}  className='text-sm px-4 md:px-8  py-2 bg-text1 text-white rounded-full cursor-pointer'>Logout</button>
       </div>
       <div className='flex h-[calc(100vh-70px)]'>
-          <Sidebar/>
+          <SideBar/>
           <div className='flex-1 overflow-auto min-h-full'>
             <Outlet/>
           </div>
