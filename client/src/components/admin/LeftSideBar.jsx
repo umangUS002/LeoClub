@@ -2,7 +2,7 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { assets } from '../../assets/assets'
 
-function SideBar() {
+function LeftSideBar() {
   return (
     <div className='flex flex-col border-r border-text1 min-h-full pt-6'>
 
@@ -34,4 +34,4 @@ function SideBar() {
   )
 }
 
-export default SideBar
+export default LeftSideBar
