@@ -8,6 +8,10 @@ import gmail_logo from "./gmail_logo.svg";
 import facebook_logo from "./facebook_logo.svg";
 import instagram_logo from "./instagram_logo.svg";
 import twitter_logo from "./twitter_logo.svg";
+import list_icon from './list_icon.svg'
+import add_icon from './add_icon.svg'
+import comment_icon from './comment_icon.svg'
+import home_icon from './home_icon.svg'
 
 export const assets = {
     Logo,
@@ -19,7 +23,11 @@ export const assets = {
     gmail_logo,
     facebook_logo,
     instagram_logo,
-    twitter_logo
+    twitter_logo,
+    list_icon,
+    add_icon,
+    comment_icon,
+    home_icon
 }
 
 export const menuLinks = [

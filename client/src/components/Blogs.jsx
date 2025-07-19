@@ -33,7 +33,7 @@ const BlogCard = ({ testimonial }) => (
       alt={testimonial.name}
       className="w-full h-84 max-sm:h-54 rounded-lg mx-auto mb-4 object-cover"
     />
-    <h3 className="text-xl font-semibold text-primary">{testimonial.name}</h3>
+    <h3 className="text-xl font-semibold text-gray-400">{testimonial.name}</h3>
     <p className="text-sm text-text1">{testimonial.title}</p>
   </div>
 );
@@ -53,8 +53,8 @@ const Blogs = () => {
     <div className="bg-primary py-16 px-4 md:px-20 min-h-[80vh] flex items-center justify-center">
       <div className="flex flex-col md:flex-row items-center justify-between gap-10 w-full max-w-6xl">
         {/* === Left Content === */}
-        <div className="relative w-full md:w-1/2 flex flex-col items-center">
-          <div className="absolute top-0 right-0 h-full w-8 bg-gradient-to-l max-sm:bg-gradient-to-r from-primary to-text1 z-10 pointer-events-none" />
+<div className="relative w-full md:w-3/5 flex flex-col items-center py-10">
+          <div className="absolute top-0 right-0 h-full md:w-18 w-8 bg-gradient-to-l max-sm:bg-gradient-to-r from-primary to-text1 z-10 pointer-events-none" />
 
 
           <AnimatePresence mode="wait">
@@ -83,39 +83,38 @@ const Blogs = () => {
         </div>
 
         {/* === Right Section === */}
-        <div
-          className="w-full md:w-1/2 flex flex-col items-center justify-center text-center ">
+<div className="w-full max-sm:-mt-10 md:w-2/5 flex flex-col items-center md:items-end justify-end text-center md:text-right">
+  <div className="max-w-md">
+    <motion.h1
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+      className="text-4xl sm:text-6xl font-extrabold pb-2 text-transparent bg-clip-text bg-gradient-to-r from-[#00FFF0] via-[#3ABEFF] to-[#5F85FF]"
+    >
+      Our Posts
+    </motion.h1>
 
-          <div className="">
+    <motion.p
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, delay: 0.4 }}
+      className="text-white/80 sm:mt-4 mt-1 sm:text-lg text-sm"
+    >
+      Explore our club blogs, posts and other content. Join us for engaging learning visual experience.
+    </motion.p>
 
-            <motion.h1
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="text-5xl sm:text-6xl font-extrabold pb-2 text-transparent bg-clip-text bg-gradient-to-r from-[#00FFF0] via-[#3ABEFF] to-[#5F85FF]"
-            >
-              Our Posts
-            </motion.h1>
+    <motion.button
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, delay: 0.6 }}
+      className="sm:mt-6 sm:px-8 sm:py-3 mt-4 px-4 py-2 bg-text1 hover:bg-text1/30 text-black hover:text-white rounded-xl shadow-md transition-all duration-300"
+    >
+      Show More
+    </motion.button>
+  </div>
+</div>
 
-            <motion.p
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="text-white/80 mt-4 text-base sm:text-lg max-w-md">
-              Explore our club blogs, posts and other content. Join us
-              for engaging learning visual experience.
-            </motion.p>
 
-            <motion.button
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.6 }}
-              className="mt-6 px-8 py-3 bg-text1 hover:bg-text1/30 text-black hover:text-white rounded-xl shadow-md transition-all duration-300">
-              Show More
-            </motion.button>
-          </div>
-
-        </div>
       </div>
     </div>
   );

@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { delay, motion, useInView } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { assets } from "../assets/assets";
 
 const aboutItems = [
@@ -24,26 +24,31 @@ export default function About() {
   return (
     <div id="about" className="relative bg-primary text-text1 py-18 max-sm:py-10 px-4 md:px-16 overflow-hidden">
 
-      {/* Floating Abstract Blobs */}
-      
+      {/* Floating Abstract Blob */}
       <motion.div
-        animate={{ y: [0, -805, 0], x: [0, 10, 0] }}
-        transition={{ repeat: Infinity, duration: 20, ease: "easeInOut" }}
+        animate={{ y: [0, -60, 0], x: [0, 10, 0] }}
+        transition={{
+          repeat: Infinity,
+          repeatType: "mirror",
+          duration: 12,
+          ease: "easeInOut",
+        }}
         className="absolute top-1/2 right-3/5 w-[400px] h-[400px] bg-cyan-500 opacity-10 blur-2xl rounded-full z-0"
       />
 
-      {/* Content */}
+      {/* Mobile Heading */}
       <motion.h2
         initial={{ opacity: 0, y: 100 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="text-center md:hidden text-5xl font-extrabold text-transparent bg-clip-text bg-clip-text bg-gradient-to-r from-[#00FFF0] via-[#3ABEFF] to-[#5F85FF] mb-20 z-10 relative">
+        className="text-center md:hidden text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#00FFF0] via-[#3ABEFF] to-[#5F85FF] mb-20 z-10 relative"
+      >
         About Us
       </motion.h2>
 
       <div className="flex max-sm:flex-col gap-20">
+        {/* Timeline Section */}
         <div className="relative max-w-4xl mx-auto z-10 min-w-[50%]">
-          {/* Vertical line */}
           <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-[2px] bg-slate-600 z-0" />
 
           <div className="flex flex-col gap-[15vh] max-sm:gap-[10vh] relative z-10">
@@ -52,78 +57,90 @@ export default function About() {
               const inView = useInView(ref, { once: false, amount: 0.2 });
 
               return (
-                <div
+                <motion.div
                   key={i}
                   ref={ref}
                   className="flex flex-col items-center text-center px-4"
+                  initial={{ opacity: 0, y: 80 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: i * 0.2 }}
                 >
-                  {/* Tick Circle */}
+                  {/* Animated Tick Circle */}
                   <motion.div
                     className="mb-6 w-20 h-20 rounded-full border-8 shadow-xl"
                     animate={{
-                      backgroundColor: inView ? "#3ABEFF" : "#1e293b", // text1 : slate-800
+                      backgroundColor: inView ? "#3ABEFF" : "#1e293b",
                       borderColor: inView ? "#ffffff" : "#64748b",
                       scale: inView ? 1.1 : 0.7,
                       opacity: inView ? 1 : 0.3,
-                      boxShadow: inView
-                        ? "0 0 25px #3ABEFF88"
-                        : "0 0 0px transparent",
+                      boxShadow: inView ? "0 0 25px #3ABEFF88" : "0 0 0px transparent",
                     }}
-                    transition={{ duration: 0.6 }}
+                    transition={{
+                      duration: 0.6,
+                      delay: i * 0.2,
+                      type: "spring",
+                      stiffness: 120,
+                    }}
                   />
 
-                  {/* Title */}
-                  <motion.h3
-                    initial={{ opacity: 0, y: 100 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6 }}
-                    className="text-4xl font-bold text-text1"
-                  >
-                    {item.title}
-                  </motion.h3>
+                  <h3 className="text-4xl font-bold text-text1">{item.title}</h3>
 
-                  {/* Description */}
                   <motion.p
-                    initial={false}
-                    animate={{ opacity: inView ? 1 : 0, y: inView ? 0 : 10 }}
-                    transition={{ duration: 0.5 }}
+                    animate={{ opacity: inView ? 1 : 0, y: inView ? 0 : 20 }}
+                    transition={{ duration: 0.5, delay: i * 0.2 + 0.2 }}
                     className="mt-4 text-lg text-white/70 max-w-xl"
                   >
                     {item.description}
                   </motion.p>
-                </div>
+                </motion.div>
               );
             })}
           </div>
         </div>
 
+        {/* Right Description Section (Hidden on Small Screens) */}
         <div className="max-sm:hidden max-sm:mt-20 text-2xl px-4 flex flex-col md:gap-5 items-center justify-top">
           <motion.h1
             initial={{ opacity: 0, y: 100 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className=" text-center max-md:hidden text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#00FFF0] via-[#3ABEFF] to-[#5F85FF] mb-10 z-10 relative">
+            className=" text-center max-md:hidden text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#00FFF0] via-[#3ABEFF] to-[#5F85FF] mb-10 z-10 relative"
+          >
             About Us
           </motion.h1>
+
           <motion.h1
             initial={{ opacity: 0, x: 100 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
             className="text-lg"
-          >At LEO Club, we are a dynamic community of young leaders committed to service, personal development, and social impact. Backed by Lions Clubs International, we empower youth to lead change through hands-on projects, leadership training, and community outreach.</motion.h1>
+          >
+            At LEO Club, we are a dynamic community of young leaders committed to
+            service, personal development, and social impact. Backed by Lions
+            Clubs International, we empower youth to lead change through hands-on
+            projects, leadership training, and community outreach.
+          </motion.h1>
 
+          {/* Bullet Points */}
           <motion.div
             initial={{ opacity: 0, x: 100 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.6 }}
-            className="mt-8 text-lg space-y-4 text-left border bg-gray-800 border-white p-3">
+            className="mt-8 text-lg space-y-4 text-left border bg-gray-800 border-white p-3"
+          >
             {[
               "Leadership development through real-world experiences",
               "Organizing impactful social service events",
               "Creating platforms for youth to express, lead, and grow",
               "Networking with changemakers across the country",
             ].map((point, idx) => (
-              <div key={idx} className="flex items-start gap-3">
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, delay: idx * 0.2 }}
+                className="flex items-start gap-3"
+              >
                 <span
                   className="w-6 h-6"
                   dangerouslySetInnerHTML={{
@@ -142,45 +159,39 @@ export default function About() {
                   }}
                 />
                 <p className="text-gray-200 text-sm">{point}</p>
-              </div>
+              </motion.div>
             ))}
           </motion.div>
 
+          {/* Floating Logo (Desktop) */}
           <motion.img
-            animate={{
-              y: [0, -20, 0], // Moves up and down
-            }}
+            animate={{ y: [0, -15, 0] }}
             transition={{
-              duration: 4,
+              duration: 3,
               repeat: Infinity,
-              repeatType: "loop",
+              repeatType: "mirror",
               ease: "easeInOut",
-              delay: 0.6,
             }}
             src={assets.leologo}
-            alt=""
+            alt="LEO Logo"
             className="h-60 w-70 mt-15"
           />
-
         </div>
 
+        {/* Floating Logo (Mobile) */}
         <motion.img
-          animate={{
-            y: [0, -20, 0], // Moves up and down
-          }}
+          animate={{ y: [0, -15, 0] }}
           transition={{
-            duration: 4,
+            duration: 3,
             repeat: Infinity,
-            repeatType: "loop",
+            repeatType: "mirror",
             ease: "easeInOut",
-            delay: 0.6,
           }}
           src={assets.leologo}
-          alt=""
+          alt="LEO Logo"
           className="h-40 w-45 mx-auto mt-5 md:hidden"
         />
       </div>
-
     </div>
   );
 }

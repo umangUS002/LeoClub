@@ -20,7 +20,7 @@ function Navbar() {
         </Link>
 
         <div className={`text-text1 max-sm:fixed  max-sm:h-80vh backdrop-blur-xl text-sm max-sm:w-full max-sm:top-15 max-sm:border-t border-text1 right-0 flex flex-col sm:flex-row items-center sm:items-center gap-4 sm:gap-8 max-sm:p-4
-        transition-all duration-300 z-50 bg-primary/50 ${open ? 'max-sm:translate-x-0 h-screen' : 'max-sm:translate-x-full'}`}>
+        transition-all duration-300 z-50 bg-primary/50  ${open ? 'max-sm:translate-x-0 h-screen' : 'max-sm:translate-x-full'}`}>
             {menuLinks.map((link, index) => {
   if (link.homeSection) {
     return (
@@ -40,7 +40,7 @@ function Navbar() {
             if (el) el.scrollIntoView({ behavior: "smooth" });
           }
         }}
-        className={`${open ? "text-3xl mb-7" : ""}`}
+        className={`${open ? "text-3xl mb-7 cursor-pointer" : "cursor-pointer"}`}
       >
         {link.name}
       </button>
@@ -51,7 +51,7 @@ function Navbar() {
     <Link
       key={index}
       to={link.path}
-      className={`${open ? "text-3xl mb-7" : ""}`}
+      className={`${open ? "text-3xl mb-7 cursor-pointer" : ""}`}
       onClick={() => setOpen(false)}
     >
       {link.name}
@@ -62,7 +62,8 @@ function Navbar() {
                 
 
             <div className='flex max-sm:flex-col items-start sm:items-center gap-6'>
-                <button className='cursor-pointer px-8 py-2 bg-primary hover:bg-text1/50 transition-all text-primary bg-text1 rounded-lg'>Admin</button>
+                <button onClick={()=>navigate('/admin')} className='cursor-pointer px-8 py-2 bg-primary hover:bg-text1/50 transition-all text-primary bg-text1 rounded-lg'>Admin</button>
+
             </div>
         </div>
 
