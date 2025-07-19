@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { FaInstagram, FaLinkedin } from "react-icons/fa";
-import { faculty, seniorExecutives, juniorExecutives } from "../data/teamData";
+import { faculty, seniorExecutives, juniorExecutives } from "../assets/teamData";
 //import pawIcon from "../assets/icons/paw4.svg";
 import bg from "../assets/icons/bg2.svg";
 
