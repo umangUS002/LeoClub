@@ -1,9 +1,9 @@
 import React from 'react'
 import { assets } from '../../assets/assets'
 import { Link, Outlet, useNavigate } from 'react-router-dom';
-import SideBar from '../../components/admin/SideBar';
 import { useAppContext } from '../../context/AppContext';
 import { motion } from 'framer-motion';
+import SideBar from '../../components/admin/SideBar';
 
 function Layout() {
 
