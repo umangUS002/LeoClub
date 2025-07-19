@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import './index.css'
-import { Route, Routes } from 'react-router-dom'
+import { Route, Routes, useLocation } from 'react-router-dom'
 import Home from './pages/Home'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
@@ -9,7 +9,6 @@ import Team from './pages/Team'
 import Gallery from './pages/Gallery'
 import Posts from './pages/Posts'
 import Layout from './pages/admin/Layout'
-import Dashboard from './pages/admin/Dashboard'
 import AddEvent from './pages/admin/AddEvent'
 import AddPost from './pages/admin/AddPost'
 import ManageEvents from './pages/admin/ManageEvents'
@@ -20,10 +19,11 @@ import Login from './components/Login'
 function App() {
 
   const {admin} = useAppContext(AppContext)
+  const isOwnerPath = useLocation().pathname.startsWith('/admin')
 
   return (
     <div className='bg-primary text-text1'>
-      {admin ? "" : <Navbar/>}
+      {!isOwnerPath && <Navbar/>}
 
       <Routes>
         <Route path='/' element={<Home />} />
@@ -32,15 +32,14 @@ function App() {
         <Route path='/gallery' element={<Gallery />} />
         <Route path='/posts' element={<Posts />} />
         <Route path='/admin' element={admin ? <Layout/> : <Login/>}>
-            <Route index element={<Dashboard/>} />
+            <Route index element={<ManageEvents/>} />
             <Route path='add-event' element={<AddEvent/>} />
             <Route path='add-post' element={<AddPost/>} />
-            <Route path='manage-events' element={<ManageEvents/>} />
             <Route path='manage-posts' element={<ManagePosts/>} />
         </Route>      
       </Routes>
 
-      {admin ? "" : <Footer/>}
+      {!isOwnerPath && <Footer/>}
     </div>
   )
 }

@@ -12,6 +12,8 @@ import list_icon from './list_icon.svg'
 import add_icon from './add_icon.svg'
 import comment_icon from './comment_icon.svg'
 import home_icon from './home_icon.svg'
+import upload_icon from './upload_icon.svg'
+import delete_icon from './delete_icon.svg'
 
 export const assets = {
     Logo,
@@ -27,7 +29,9 @@ export const assets = {
     list_icon,
     add_icon,
     comment_icon,
-    home_icon
+    home_icon,
+    upload_icon,
+    delete_icon
 }
 
 export const menuLinks = [
