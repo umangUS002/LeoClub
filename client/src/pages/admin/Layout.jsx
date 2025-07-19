@@ -12,7 +12,7 @@ function Layout() {
 
   const logout = async() => {
         setAdmin(false)
-        navigate('/')
+        navigate('/');
   }
 
   return (
