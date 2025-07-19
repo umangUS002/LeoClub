@@ -2,15 +2,43 @@ import React from "react";
 import { motion } from "framer-motion";
 import { FaInstagram, FaLinkedin } from "react-icons/fa";
 import { faculty, seniorExecutives, juniorExecutives } from "../assets/teamData";
-//import pawIcon from "../assets/icons/paw4.svg";
+import pawIcon from "../assets/icons/paw4.svg";
 import bg from "../assets/icons/bg2.svg";
 
+// Variants for section animation
+const sectionVariant = {
+  hidden: { opacity: 0, y: 50 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: "easeOut",
+    },
+  },
+};
 
-const Card = ({ member, isFaculty }) => (
+// Card hover + fade-in variant
+const cardVariant = {
+  hidden: { opacity: 0, scale: 0.8 },
+  visible: (i) => ({
+    opacity: 1,
+    scale: 1,
+    transition: {
+      delay: i * 0.1,
+      duration: 0.4,
+      ease: "easeOut",
+    },
+  }),
+};
+
+const Card = ({ member, isFaculty, index }) => (
   <motion.div
-    whileHover={{ scale: 1.05 }}
+    variants={cardVariant}
+    custom={index}
+    whileHover={{ scale: 1.05, rotateX: 2, rotateY: 2 }}
     transition={{ type: "spring", stiffness: 200, damping: 15 }}
-    className="bg-white/10 backdrop-blur-sm rounded-xl p-5 shadow-[0_0_20px_rgba(255,255,255,0.1)] w-72 text-center text-white hover:shadow-[0_0_25px_rgba(255,255,255,0.3)] hover:bg-white/20 transition-all duration-300"
+    className="bg-white/10 cursor-pointer backdrop-blur-sm rounded-xl p-5 shadow-[0_0_20px_rgba(255,255,255,0.1)] w-72 text-center text-white hover:shadow-[0_0_25px_rgba(255,255,255,0.3)] hover:bg-white/20 transition-all duration-300"
   >
     <img
       src={member.image}
@@ -38,21 +66,46 @@ const Card = ({ member, isFaculty }) => (
 );
 
 const TeamSection = ({ title, members, isFaculty = false }) => (
-  <section className="py-12">
-    <h2 className="text-3xl font-bold text-center text-white mb-8">{title}</h2>
-    <div className="flex flex-wrap gap-8 justify-center">
-      {members.map((member, idx) => (
-        <Card key={idx} member={member} isFaculty={isFaculty} />
-      ))}
-    </div>
-  </section>
-);
+  <motion.section
+    variants={sectionVariant}
+    initial="hidden"
+    whileInView="visible"
+    viewport={{ once: true, amount: 0.2 }}
+    className="py-12"
+  >
+    <motion.h2
+      className="text-3xl font-bold text-center text-white mb-8"
+      initial={{ opacity: 0, scale: 0.8 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.5 }}
+    >
+      {title}
+    </motion.h2>
 
+    <motion.div
+      className="flex flex-wrap gap-8 justify-center"
+      initial="hidden"
+      whileInView="visible"
+      variants={{
+        visible: {
+          transition: {
+            staggerChildren: 0.1,
+          },
+        },
+      }}
+      viewport={{ once: true, amount: 0.2 }}
+    >
+      {members.map((member, idx) => (
+        <Card key={idx} member={member} isFaculty={isFaculty} index={idx} />
+      ))}
+    </motion.div>
+  </motion.section>
+);
 
 const Team = () => {
   return (
     <div className="bg-black min-h-screen text-white">
-      <section className="relative overflow-hidden pt-20 pb-16 px-4">
+      <section className="relative h-[calc(100vh-70px)] flex flex-col justify-center overflow-hidden pt-20 pb-16 px-4">
         <img
           src={bg}
           alt="Decorative Background"
@@ -61,58 +114,34 @@ const Team = () => {
 
         <div className="relative z-10 flex flex-col-reverse md:flex-row items-center justify-between max-w-6xl mx-auto gap-12 pb-20">
           {/* Text Section */}
-          <motion.div
-            className="text-left max-w-xl"
-            initial={{ x: -100, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{ duration: 1 }}
-          >
+          <div>
             <motion.h1
-              className="text-6xl max-sm:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#00FFF0] via-[#3ABEFF] to-[#5F85FF]"
-              initial={{ scale: 0.8, opacity: 0 }}
+              className="text-7xl max-sm:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#00FFF0] via-[#3ABEFF] to-[#5F85FF]"
+              initial={{ scale: 0.6, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
-              transition={{ delay: 0.3, duration: 0.6 }}
+              transition={{  duration: 1.4 }}
             >
               Meet Our Team
             </motion.h1>
 
             <motion.p
-              className="text-gray-300 mt-3 text-lg"
+              className="text-gray-300 mt-3 text-xl"
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.6, duration: 0.6 }}
+              transition={{ delay: 0.4, duration: 1 }}
             >
               The passionate individuals driving our club forward with dedication and vision.
             </motion.p>
-          </motion.div> 
-
-          {/* Paw Icon Section */}
-          {/* <motion.div
-            className="w-full md:w-[400px] lg:w-[480px]"
-            initial={{ scale: 0.5, rotate: -15, opacity: 0 }}
-            animate={{ scale: 1, rotate: 0, opacity: 1 }}
-            transition={{ duration: 1.2, ease: "easeOut" }}
-          >
-            <img
-              src={pawIcon}
-              alt="Paw Icon"
-              className="w-full h-full object-contain drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]"
-            />
-          </motion.div> */}
+          </div>
         </div>
       </section>
 
       {/* Team Sections */}
-      <motion.div
-        className="pt-12 pb-16 px-4"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.6 }}
-      >
+      <div className="pt-12 pb-16 px-4">
         <TeamSection title="Faculty Co-ordinator" members={faculty} isFaculty />
         <TeamSection title="Senior Executives" members={seniorExecutives} />
         <TeamSection title="Junior Executives" members={juniorExecutives} />
-      </motion.div>
+      </div>
     </div>
   );
 };
