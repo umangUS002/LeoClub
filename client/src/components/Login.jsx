@@ -3,18 +3,37 @@ import { AppContext } from '../context/AppContext';
 import { useNavigate } from 'react-router-dom';
 
 function Login() {
-  const { setAdmin } = useContext(AppContext);
+  const { setToken, axios, toast } = useContext(AppContext);
   const navigate = useNavigate();
 
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  console.log({ axios, setToken, toast }); 
+
+  const [email, setEmail] = useState('leoclubbitmesra@gmail.com');
+  const [password, setPassword] = useState('leoclub2025');
   const modalRef = useRef(null);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setAdmin(true);
-    navigate('/admin'); // or wherever you want after login
-  };
+  const handleSubmit = async (e) => {
+  e.preventDefault();
+  console.log("Login form submitted");
+
+  try {
+    const { data } = await axios.post('/api/admin/login', { email, password });
+    console.log("API Response:", data);
+
+    if (data.success) {
+      setToken(data.token);
+      localStorage.setItem('token', data.token);
+      axios.defaults.headers.common['Authorization'] = data.token;
+      toast.success("Login successful");
+      navigate('/admin'); // or any route you want
+    } else {
+      toast.error(data.message || "Login failed");
+    }
+  } catch (error) {
+    console.error("Login error:", error.response?.data || error.message);
+    toast.error(error.response?.data?.message || "Something went wrong");
+  }
+};
 
   const handleBackdropClick = (e) => {
     if (modalRef.current && !modalRef.current.contains(e.target)) {
@@ -78,6 +97,7 @@ function Login() {
           >
             Login
           </button>
+
         </form>
       </div>
     </div>

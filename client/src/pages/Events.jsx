@@ -1,21 +1,24 @@
 import React, { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
-import { eventsData } from '../assets/assets'
+import { useContext } from 'react';
+import { AppContext } from '../context/AppContext';
 
 function Events() {
+
+    const {events} = useContext(AppContext)
 
     const [completedEvents, setCompletedEvents] = useState([]);
     const [upcomingEvents, setUpcomingEvents] = useState([]);
 
-    const getUpcomingEvents = async () => {
-        const upcoming = eventsData.filter((event) => event.status === 'Upcoming');
-        const completed = eventsData.filter((event) => event.status === 'Completed');
+    const getAllEvents = async () => {
+        const upcoming = events.filter((event) => event.status === 'Upcoming');
+        const completed = events.filter((event) => event.status === 'Completed');
         setUpcomingEvents(upcoming);
         setCompletedEvents(completed);
     };
 
     useEffect(() => {
-        getUpcomingEvents();
+        getAllEvents()
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }, []);
 
@@ -48,7 +51,7 @@ function Events() {
                             <h2 className='text-lg font-bold max-sm:px-1'>{event.name}</h2>
                             <p className='text-sm mb-1 mt-2 max-sm:px-1'>{event.description}</p>
                             <div className='text-xs mt-3 flex justify-between max-sm:px-1'>
-                                <p className='text-gray-300'>{event.Date}</p>
+                                <p className='text-gray-300'>{event.date}</p>
                                 <span className='text-green-400'>{event.status}</span>
                             </div>
                             <button className="mt-4 w-full bg-gradient-to-r from-green-600 to-green-400 text-white py-2 px-4 rounded-md hover:from-green-400 hover:to-green-600 transition duration-300 font-semibold">
@@ -65,7 +68,7 @@ function Events() {
                 transition={{ duration: 0.6}}
                 className='mt-10 w-full max-w-7xl px-1 md:px-20 mt-20 bg-primary rounded-lg pt-10 pb-10 shadow-lg shadow-text1/30'
             >
-                <motion.h1 className='text-3xl md:text-4xl mb-6 text-center'>Completed</motion.h1>
+                <motion.h1 className='text-3xl md:text-4xl mb-6 text-left max-sm:text-center'>Completed</motion.h1>
                 <div className='grid grid-cols-2 md:grid-cols-3 gap-10 max-sm:gap-3'>
                     {completedEvents.map((event, index) => (
                         <motion.div 
@@ -77,7 +80,7 @@ function Events() {
                             <h2 className='text-lg font-bold px-1 max-sm:px-1'>{event.name}</h2>
                             <p className='text-sm mb-1 mt-2 max-sm:px-1'>{event.description}</p>
                             <div className='text-xs mt-3 max-sm:flex-col flex justify-between max-sm:px-1'>
-                                <p className='text-gray-300'>{event.Date}</p>
+                                <p className='text-gray-300'>{event.date}</p>
                                 <span className='text-red-400 max-sm:pt-1'>{event.status}</span>
                             </div>
                         </motion.div>

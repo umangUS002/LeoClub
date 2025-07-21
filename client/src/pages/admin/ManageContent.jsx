@@ -1,21 +1,25 @@
 import React, { useEffect, useState } from 'react'
-import { assets, contentData } from '../../assets/assets'
+import { assets } from '../../assets/assets'
 import Title from '../../components/admin/Title'
+import { useContext } from 'react'
+import { AppContext } from '../../context/AppContext'
 
-function ManagePosts() {
+function ManageContent() {
 
-  const [posts, setPosts] = useState([])
+  const {allContent} = useContext(AppContext)
 
-  const fetchPosts = async () => {
-    setPosts(contentData)
+  const [content, setAllContent] = useState([])
+
+  const fetchContent = async () => {
+    setAllContent(allContent)
   }
 
-  const deletePost = async (e) => {
+  const deleteContent = async (e) => {
     e.preventDefault()
   }
 
   useEffect(() => {
-    fetchPosts()
+    fetchContent()
   }, [])
 
   return (
@@ -34,31 +38,31 @@ function ManagePosts() {
             </tr>
           </thead>
           <tbody>
-            {posts.map((post, index) => (
+            {content.map((content, index) => (
               <tr key={index} className='border-t border-borderColor'>
 
                 <td className='p-3 flex items-center gap-3'>
-                  <img src={post.image} alt="" className='h-12 w-12 aspect-square rounded-md object-cover' />
+                  <img src={content.image} alt="" className='h-12 w-12 aspect-square rounded-md object-cover' />
                   <div className='max-md:hidden'>
-                    <p className='font-medium'>{post.title}</p>
+                    <p className='font-medium'>{content.title}</p>
                   </div>
                 </td>
 
                 <td className='p-3'>
-                  <span className={`px-3 py-1 rounded-full text-xs font-semibold ${post.type === 'Blog'
+                  <span className={`px-3 py-1 rounded-full text-xs font-semibold ${content.type === 'Blog'
                       ? 'bg-green-100 text-green-500'
-                      : post.type === 'Video'
+                      : content.type === 'Video'
                         ? 'bg-red-100 text-red-500'
                         : 'bg-purple-100 text-purple-500'
                     }`}>
-                    {post.type}
+                    {content.type}
                   </span>                  
                 </td>
 
-                <td className='p-3 max-md:hidden'>{post.date}</td>
+                <td className='p-3 max-md:hidden'>{content.date}</td>
 
                 <td className='flex items-center p-3'>
-                  <img onClick={() => deletePost(post._id)} src={assets.delete_icon} alt="" className='cursor-pointer' />
+                  <img onClick={() => deletePost(content._id)} src={assets.delete_icon} alt="" className='cursor-pointer' />
                 </td>
 
               </tr>
@@ -71,4 +75,4 @@ function ManagePosts() {
   )
 }
 
-export default ManagePosts
+export default ManageContent

@@ -7,22 +7,24 @@ import Footer from './components/Footer'
 import Events from './pages/Events'
 import Team from './pages/Team'
 import Gallery from './pages/Gallery'
-import Posts from './pages/Posts'
 import Layout from './pages/admin/Layout'
 import AddEvent from './pages/admin/AddEvent'
-import AddPost from './pages/admin/AddPost'
 import ManageEvents from './pages/admin/ManageEvents'
-import ManagePosts from './pages/admin/ManagePosts'
 import { AppContext, useAppContext } from './context/AppContext'
 import Login from './components/Login'
+import {Toaster} from 'react-hot-toast'
+import Content from './pages/Content'
+import ManageContent from './pages/admin/ManageContent'
+import AddContent from './pages/admin/AddContent'
 
 function App() {
 
-  const {admin} = useAppContext(AppContext)
+  const {token} = useAppContext(AppContext)
   const isOwnerPath = useLocation().pathname.startsWith('/admin')
 
   return (
     <div className='bg-primary text-text1'>
+      <Toaster/>
       {!isOwnerPath && <Navbar/>}
 
       <Routes>
@@ -30,12 +32,12 @@ function App() {
         <Route path='/events' element={<Events />} />
         <Route path='/team' element={<Team />} />
         <Route path='/gallery' element={<Gallery />} />
-        <Route path='/posts' element={<Posts />} />
-        <Route path='/admin' element={admin ? <Layout/> : <Login/>}>
+        <Route path='/content' element={<Content />} />
+        <Route path='/admin' element={token ? <Layout/> : <Login/>}>
             <Route index element={<ManageEvents/>} />
             <Route path='add-event' element={<AddEvent/>} />
-            <Route path='add-post' element={<AddPost/>} />
-            <Route path='manage-posts' element={<ManagePosts/>} />
+            <Route path='add-content' element={<AddContent/>} />
+            <Route path='manage-content' element={<ManageContent/>} />
         </Route>      
       </Routes>
 

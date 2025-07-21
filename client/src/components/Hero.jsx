@@ -9,22 +9,20 @@ export default function Hero() {
   const [gatesOpened, setGatesOpened] = useState(false); // 🆕 controls gate unmounting
 
   useEffect(() => {
-    // Simulate progress loading
     const interval = setInterval(() => {
       setProgress((prev) => {
         if (prev >= 100) {
           clearInterval(interval);
-          setIsLoaded(true); // start gate animation
+          setIsLoaded(true);
           return 100;
         }
         return prev + 1;
       });
-    }, 15); // 2.5s total load
+    }, 15); 
 
-    // After gate animation ends, remove gates
     const gateTimeout = setTimeout(() => {
       setGatesOpened(true);
-    }, 1500 + 1200); // 2.5s load + 1.2s animation
+    }, 1500 + 1200);
 
     return () => {
       clearInterval(interval);
@@ -35,7 +33,6 @@ export default function Hero() {
   return (
     <div className="relative h-[calc(100vh-70px)] max-sm:h-[calc(100vh-120px)] w-full bg-primary text-text1 overflow-hidden flex items-center justify-center px-4">
       
-      {/* === GATE Overlays === */}
       {!gatesOpened && (
         <>
           {/* Center Logo & Progress Bar */}
@@ -49,7 +46,6 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Left Gate */}
           <motion.div
             initial={{ x: 0 }}
             animate={isLoaded ? { x: "-100%" } : {}}
@@ -57,7 +53,6 @@ export default function Hero() {
             className="absolute top-0 left-0 w-1/2 h-full bg-gradient-to-r from-text1/30 via-primary to-primary border-r-4 border-zinc-700 shadow-2xl z-40"
           />
 
-          {/* Right Gate */}
           <motion.div
             initial={{ x: 0 }}
             animate={isLoaded ? { x: "100%" } : {}}
@@ -67,7 +62,6 @@ export default function Hero() {
         </>
       )}
 
-      {/* === Floating Blobs === */}
       <motion.div
         animate={{ y: [0, 500, 0], x: [0, 100, 0] }}
         transition={{ repeat: Infinity, duration: 30, ease: "easeInOut" }}
@@ -79,10 +73,8 @@ export default function Hero() {
         className="absolute bottom-10 right-10 w-[100px] h-[100px] bg-cyan-500 opacity-100 blur-3xl rounded-full z-0"
       />
 
-      {/* === Wave Background === */}
       <LayeredWaveBackground />
 
-      {/* === Hero Content === */}
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         animate={isLoaded ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}

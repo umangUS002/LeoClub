@@ -1,9 +1,12 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { motion } from 'framer-motion'
-import { contentData } from '../assets/assets'
 import Modal from '../components/Modal'
+import { AppContext } from '../context/AppContext'
 
-function Posts() {
+function Content() {
+
+    const { allContent } = useContext(AppContext)
+
     const [blogs, setBlogs] = useState([])
     const [videos, setVideos] = useState([])
     const [posts, setPosts] = useState([])
@@ -13,9 +16,9 @@ function Posts() {
 
 
     const getContent = async () => {
-        const blogs = contentData.filter((content) => content.type === 'Blog')
-        const videos = contentData.filter((content) => content.type === 'Video')
-        const posts = contentData.filter((content) => content.type === 'Post')
+        const blogs = allContent.filter((content) => content.type === 'Blog')
+        const videos = allContent.filter((content) => content.type === 'Video')
+        const posts = allContent.filter((content) => content.type === 'Post')
         setBlogs(blogs)
         setVideos(videos)
         setPosts(posts)
@@ -56,7 +59,7 @@ function Posts() {
                                 <p className='text-gray-300'>{event.date}</p>
                                 <span className='text-green-400'>{event.type}</span>
                             </div>
-                            <button onClick={() => {setSelectedBlog(event);setModalOpen(true);}} className="mt-4 max-sm:mx-1 w-[30%] max-sm:w-[40%] bg-gradient-to-r from-cyan-400 to-blue-500 text-white py-1 px-2 rounded-md hover:from-cyan-500 hover:to-blue-600 transition duration-300 font-semibold">
+                            <button onClick={() => { setSelectedBlog(event); setModalOpen(true); }} className="mt-4 max-sm:mx-1 w-[30%] max-sm:w-[40%] bg-gradient-to-r from-cyan-400 to-blue-500 text-white py-1 px-2 rounded-md hover:from-cyan-500 hover:to-blue-600 transition duration-300 font-semibold">
                                 Read
                             </button>
                         </motion.div>
@@ -126,4 +129,4 @@ function Posts() {
     )
 }
 
-export default Posts
+export default Content

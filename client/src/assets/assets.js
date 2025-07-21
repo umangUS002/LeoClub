@@ -14,6 +14,7 @@ import comment_icon from './comment_icon.svg'
 import home_icon from './home_icon.svg'
 import upload_icon from './upload_icon.svg'
 import delete_icon from './delete_icon.svg'
+import cross_icon from './cross_icon.svg'
 
 export const assets = {
     Logo,
@@ -31,14 +32,15 @@ export const assets = {
     comment_icon,
     home_icon,
     upload_icon,
-    delete_icon
+    delete_icon,
+    cross_icon
 }
 
 export const menuLinks = [
     { name: "Home", path: "/" },
     { name: "About", path: "#about", homeSection: true },
     { name: "Events", path: "/events" },
-    { name: "Posts", path: "/posts" },
+    { name: "Content", path: "/content" },
     { name: "Gallery", path: "/gallery" },
     { name: "Our Team", path: "/team" },
 ]

@@ -7,11 +7,13 @@ import LeftSideBar from '../../components/admin/LeftSideBar';
 
 function Layout() {
 
-  const {setAdmin} = useAppContext();
+  const {setToken, axios} = useAppContext();
   const navigate = useNavigate()
 
-  const logout = async() => {
-        setAdmin(false)
+    const logout = async() => {
+        localStorage.removeItem('token');
+        axios.defaults.headers.common['Authorization'] = null;
+        setToken(null);
         navigate('/');
   }
 
