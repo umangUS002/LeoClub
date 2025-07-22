@@ -27,10 +27,10 @@ function Content() {
     useEffect(() => {
         getContent();
         window.scrollTo({ top: 0, behavior: 'smooth' });
-    }, []);
+    }, [allContent]);
 
     return (
-        <div className='flex flex-col items-center mt-10 px-4'>
+        <div className='flex flex-col items-center mt-10 px-4 '>
             <motion.h1
                 initial={{ opacity: 0, y: 60 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -40,7 +40,7 @@ function Content() {
                 Our Content
             </motion.h1>
 
-            <div className='mt-6 mb-20 w-full max-w-7xl px-1 md:px-20 bg-primary rounded-lg pt-10 pb-10 shadow-lg shadow-text1/30'>
+            <div className='mt-6 mb-20 w-full max-w-7xl px-4 md:px-20 bg-primary rounded-lg pt-10 pb-10 shadow-lg shadow-text1/30'>
                 <motion.h1
                     initial={{ opacity: 0, y: 60 }}
                     whileInView={{ opacity: 1, y: 0 }}

@@ -16,7 +16,6 @@ function Home() {
       <EventsScroller/>
       <Gallery/>
       <Blogs/>
-      <Testimonials/>
     </div>
   )
 }

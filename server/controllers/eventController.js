@@ -56,9 +56,12 @@ export const deleteEventById = async(req,res) => {
 export const toggleStatus = async(req,res) => {
     try {
         const { id } = req.body;
+        const {newStatus} = req.body;
+
         const event = await Event.findById(id);
-        event.status = !event.status;
+        event.status = newStatus;
         await event.save();
+        
         res.json({success: true, message: "Event Status Updated"})
     } catch (error) {
         res.json({success: false, message: error.message})    

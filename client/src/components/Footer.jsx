@@ -9,7 +9,7 @@ function Footer() {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className='px-6 md:px-16 lg:px-24 xl:px-32 mt-60 text-sm text-gray-500 '>
+            className='px-6 md:px-16 lg:px-24 xl:px-32 mt-60 text-sm border-text1 border-t text-gray-500 '>
 
             <motion.div
                 initial={{ opacity: 0, y: 20 }}

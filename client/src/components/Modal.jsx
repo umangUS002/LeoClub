@@ -6,25 +6,25 @@ function Modal({ modalOpen, selectedBlog, setModalOpen }) {
   if (!modalOpen || !selectedBlog) return null;
 
   return (
-    <div className="fixed inset-0 z-50 bg-black bg-opacity-50 flex items-center justify-center">
-      <div className="bg-white/10 pt-10 pb-10 w-[70%] max-w-7xl rounded-lg shadow-lg flex flex-col md:flex-row overflow-hidden relative">
+    <div className="max-sm:mt-10 fixed inset-0 z-50 bg-black bg-opacity-50 flex items-center justify-center overflow-y-auto max-h-screen p-4">
+      <div className="bg-white/10 w-full max-w-6xl rounded-lg shadow-lg flex flex-col md:flex-row relative overflow-y-auto max-h-[90vh] md:h-[80vh]">
 
         <button
           onClick={() => setModalOpen(false)}
-          className="absolute top-3 right-3 text-gray-500 hover:text-red-500 text-xl"
+          className="absolute top-3 right-3 max-sm:right-5 text-gray-500 hover:text-red-500 text-xl"
         >
           &times;
         </button>
 
-        <div className="md:w-1/2 w-[50%] h-84 md:h-[70%] flex justify-center items-center ">
+        <div className="md:w-1/2 w-full flex justify-center items-center p-4 md:p-0 ">
           <img
             src={selectedBlog.image}
             alt={selectedBlog.title}
-            className="w-[80%] h-130"
+            className="w-full h-auto max-h-[70vh] object-contain"
           />
         </div>
 
-        <div className="p-0 pr-10 pt-0 md:w-1/2">
+        <div className="max-sm:pl-4 max-sm:pb-4 pr-10 pt-0 md:pt-10 md:w-1/2">
           <h2 className="text-2xl font-bold mb-2">{selectedBlog.title}</h2>
           <p className="text-gray-400">{selectedBlog.description}</p>
 

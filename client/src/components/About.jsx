@@ -22,7 +22,7 @@ const aboutItems = [
 
 export default function About() {
   return (
-    <div id="about" className="relative bg-primary text-text1 py-18 max-sm:py-10 px-4 md:px-16 overflow-hidden">
+    <div id="about" className="relative bg-primary text-text1 py-18 max-sm:py-10 px-4 md:px-16 overflow-hidden ">
 
       {/* Floating Abstract Blob */}
       <motion.div
@@ -46,12 +46,12 @@ export default function About() {
         About Us
       </motion.h2>
 
-      <div className="flex max-sm:flex-col gap-20">
+      <div className="flex max-sm:flex-col gap-20 bg-primary rounded-lg pt-10 pb-10 shadow-lg shadow-text1/30">
         {/* Timeline Section */}
         <div className="relative max-w-4xl mx-auto z-10 min-w-[50%]">
           <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-[2px] bg-slate-600 z-0" />
 
-          <div className="flex flex-col gap-[15vh] max-sm:gap-[10vh] relative z-10">
+          <div className="flex flex-col gap-[10vh] max-sm:gap-[10vh] relative z-10">
             {aboutItems.map((item, i) => {
               const ref = useRef(null);
               const inView = useInView(ref, { once: false, amount: 0.2 });
@@ -113,7 +113,7 @@ export default function About() {
             initial={{ opacity: 0, x: 100 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="text-lg"
+            className="text-lg text-white/80 text-center"
           >
             At LEO Club, we are a dynamic community of young leaders committed to
             service, personal development, and social impact. Backed by Lions

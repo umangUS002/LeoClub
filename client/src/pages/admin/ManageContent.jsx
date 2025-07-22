@@ -3,24 +3,32 @@ import { assets } from '../../assets/assets'
 import Title from '../../components/admin/Title'
 import { useContext } from 'react'
 import { AppContext } from '../../context/AppContext'
+import toast from 'react-hot-toast'
 
 function ManageContent() {
 
-  const {allContent} = useContext(AppContext)
+  const { allContent, fetchContent, axios } = useContext(AppContext)
 
   const [content, setAllContent] = useState([])
 
-  const fetchContent = async () => {
-    setAllContent(allContent)
-  }
+  const deleteContent = async (id) => {
+    const confirmDelete = window.confirm("Are you sure you want to delete this event?");
+    if (!confirmDelete) return;
 
-  const deleteContent = async (e) => {
-    e.preventDefault()
+    try {
+      const { data } = await axios.post('/api/content/delete-content', { id })
+      if (data.success) {
+        toast.success(data.message)
+        fetchContent()
+      }
+    } catch (error) {
+      toast.error(error.message)
+    }
   }
 
   useEffect(() => {
-    fetchContent()
-  }, [])
+    setAllContent(allContent);
+  }, [allContent]);
 
   return (
     <div className='px-4 pt-10 pb-10 md:px-10 w-full'>
@@ -50,19 +58,19 @@ function ManageContent() {
 
                 <td className='p-3'>
                   <span className={`px-3 py-1 rounded-full text-xs font-semibold ${content.type === 'Blog'
-                      ? 'bg-green-100 text-green-500'
-                      : content.type === 'Video'
-                        ? 'bg-red-100 text-red-500'
-                        : 'bg-purple-100 text-purple-500'
+                    ? 'bg-green-100 text-green-500'
+                    : content.type === 'Video'
+                      ? 'bg-red-100 text-red-500'
+                      : 'bg-purple-100 text-purple-500'
                     }`}>
                     {content.type}
-                  </span>                  
+                  </span>
                 </td>
 
                 <td className='p-3 max-md:hidden'>{content.date}</td>
 
                 <td className='flex items-center p-3'>
-                  <img onClick={() => deletePost(content._id)} src={assets.delete_icon} alt="" className='cursor-pointer' />
+                  <img onClick={() => deleteContent(content._id)} src={assets.delete_icon} alt="" className='cursor-pointer' />
                 </td>
 
               </tr>

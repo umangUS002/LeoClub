@@ -57,8 +57,8 @@ const EventsScroller = () => {
   }, []);
 
   return (
-    <div className="bg-primary py-16 px-4 md:px-40 min-h-[80vh] flex items-center">
-      <div className="flex flex-col md:flex-row items-center md:items-center gap-10 w-full">
+    <div className="bg-primary py-16 px-4 md:px-30 min-h-[80vh] flex items-center ">
+      <div className="flex flex-col md:pl-10 md:flex-row items-center md:items-center gap-10 w-full bg-primary rounded-lg pt-10 pb-10 shadow-lg shadow-text1/30">
         {/* === Left Content === */}
         <div className="w-full md:w-2/5 flex flex-col items-center md:items-start justify-center text-center md:text-left">
           <motion.h1

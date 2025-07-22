@@ -15,6 +15,7 @@ import home_icon from './home_icon.svg'
 import upload_icon from './upload_icon.svg'
 import delete_icon from './delete_icon.svg'
 import cross_icon from './cross_icon.svg'
+import tick_icon from './tick_icon.svg'
 
 export const assets = {
     Logo,
@@ -33,7 +34,8 @@ export const assets = {
     home_icon,
     upload_icon,
     delete_icon,
-    cross_icon
+    cross_icon,
+    tick_icon
 }
 
 export const menuLinks = [

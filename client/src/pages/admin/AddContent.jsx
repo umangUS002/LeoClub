@@ -6,7 +6,7 @@ import toast from 'react-hot-toast'
 
 function AddContent() {
 
-  const {axios} = useContext(AppContext)
+  const {axios, fetchContent} = useContext(AppContext)
 
   const [image, setImage] = useState(null)
   const [post, setPost] = useState({
@@ -48,6 +48,7 @@ function AddContent() {
           fbLink: "",
           linkedinLink: ""
         });
+        fetchContent()
       } else {
         toast.error(data.message);
       }
@@ -110,9 +111,9 @@ function AddContent() {
           </textarea>
         </div>
 
-        <button className='flex items-center gap-2 px-4 py-2.5 mt-4 bg-text1 text-white rounded-md font-medium w-max cursor-pointer'>
+        <button className='flex items-center md:w-45 gap-2 px-4 py-2.5 mt-4 bg-text1 text-white rounded-md font-medium w-max cursor-pointer'>
           <img src={assets.tick_icon} alt="" />
-          {isLoading ? 'Adding' : 'List your Post'}
+          {isLoading ? 'Adding' : 'List your Content'}
         </button>
 
       </form>

@@ -7,7 +7,7 @@ import { AppContext } from '../../context/AppContext'
 
 function AddEvent() {
 
-  const { axios } = useContext(AppContext)
+  const { axios, fetchEvents } = useContext(AppContext)
 
   const [image, setImage] = useState(null)
   const [event, setEvent] = useState({
@@ -45,6 +45,7 @@ function AddEvent() {
           venue: "",
           teamSize: ""
         });
+        fetchEvents()
       } else {
         toast.error(data.message);
       }
@@ -102,11 +103,10 @@ function AddEvent() {
           </textarea>
         </div>
 
-        <button className='flex items-center gap-2 px-4 py-2.5 mt-4 bg-text1 text-white rounded-md font-medium w-max cursor-pointer'>
-          <img src={assets.tick_icon} alt="" />
+        <button disabled={isLoading} className='flex items-center w-full gap-2 px-4 py-2.5 mt-4 bg-text1 text-white rounded-md font-medium w-max cursor-pointer'>
+          {isLoading ? <span className='w-4 h-4 my-1 rounded-full border-2 border-t-transparent animate-spin'></span> : <img src={assets.tick_icon} alt="" />}
           {isLoading ? 'Adding' : 'List your event'}
         </button>
-
       </form>
 
     </div>
